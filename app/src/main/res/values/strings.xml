@@ -3,4 +3,6 @@
     <string name="legg_til_bilde">Legg til bilde</string>
     <string name="ta_quizen">Ta quizen</string>
     <string name="database">Database</string>
+    <string name="legg_til">Legg til</string>
+    <string name="name">Name</string>
 </resources>
