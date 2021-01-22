@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
@@ -15,13 +15,13 @@
         android:background="#FFFFFF"
         android:text="@string/ta_quizen"
         app:iconTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBilde"
+        app:layout_constraintStart_toStartOf="@+id/buttonBilde"
         app:rippleColor="#FAFAFA"
         app:strokeColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonBilde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="314dp"
@@ -29,4 +29,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDatabase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:text="@string/database"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBilde" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,5 @@
     <string name="app_name">Oblig1</string>
     <string name="legg_til_bilde">Legg til bilde</string>
     <string name="ta_quizen">Ta quizen</string>
+    <string name="database">Database</string>
 </resources>

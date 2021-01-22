@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button btn1 = (Button)findViewById(R.id.button1);       //The first button is created´"Ta quiz"
+        Button btn1 = (Button)findViewById(R.id.buttonQuiz);       //The first button is created´"Ta quiz"
         btn1.setOnClickListener(new View.OnClickListener() {    //The first buttons action is created
             public void onClick(View v) {
                 //this should send the user to the quiz-activity
@@ -26,10 +25,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button btn2 = (Button)findViewById(R.id.button2);       //The second button is created "Legg til bilde"
+        Button btn2 = (Button)findViewById(R.id.buttonBilde);       //The second button is created "Legg til bilde"
         btn2.setOnClickListener(new View.OnClickListener() {    //The second button´s action is created
             public void onClick(View v) {
                 // this should make it possible for user to add images from the phone´s library
+                Intent intent = new Intent(MainActivity.this, Add.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn3 = (Button)findViewById(R.id.buttonDatabase);       //The second button is created "Legg til bilde"
+        btn3.setOnClickListener(new View.OnClickListener() {    //The second button´s action is created
+            public void onClick(View v) {
+                // this should make it possible for user to add images from the phone´s library
+                Intent intent = new Intent(MainActivity.this, Database.class);
+                startActivity(intent);
             }
         });
 
