@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Database extends AppCompatActivity {
+
+    private ArrayList<Cat> catList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +30,9 @@ public class Database extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void addCat(Cat cat) {
+        catList.add(cat);
     }
 }

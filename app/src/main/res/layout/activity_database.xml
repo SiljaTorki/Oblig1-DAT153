@@ -8,17 +8,14 @@
 
     <!--<androidx.constraintlayout.widget.ConstraintLayout-->
     <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:stretchColumns="*">
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        tools:context=".Database">
         <!--- android:layout_height="wrap_content"-->
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
@@ -33,9 +30,7 @@
                 tools:layout_editor_absoluteY="16dp" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <TextView
                 android:id="@+id/textViewCat1"
                 android:layout_width="wrap_content"
@@ -53,9 +48,7 @@
         </TableRow>
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
@@ -71,9 +64,7 @@
         </TableRow>
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <TextView
                 android:id="@+id/textViewCat2"
                 android:layout_width="wrap_content"
@@ -91,9 +82,7 @@
         </TableRow>
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
@@ -108,9 +97,7 @@
                 tools:layout_editor_absoluteY="482dp" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TableRow>
             <TextView
                 android:id="@+id/textViewCat3"
                 android:layout_width="wrap_content"
@@ -126,24 +113,30 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="662dp" />
         </TableRow>
+    </TableLayout>
 
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/TableLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:stretchColumns="*">
+
+
+        <TableRow
+            android:id="@+id/TableRow01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/buttonToAdd"
-                android:text="@string/legg_til"
-                android:layout_weight="1"
-                />
+                android:text="@string/legg_til" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/buttonToRemove"
                 android:text="@string/fjern"
-                android:layout_weight="1"
-                />
-
+                app:layout_constraintStart_toEndOf="@+id/buttonToAdd" />
+        </TableRow>
     </TableLayout>
 
     <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
