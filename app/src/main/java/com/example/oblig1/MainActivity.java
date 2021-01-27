@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn3 = (Button)findViewById(R.id.buttonDatabase);       //The second button is created "Legg til bilde"
-        btn3.setOnClickListener(new View.OnClickListener() {    //The second button´s action is created
+        Button btn3 = (Button)findViewById(R.id.buttonDatabase);       //The third utton is created "Legg til bilde"
+        btn3.setOnClickListener(new View.OnClickListener() {    //The third button´s action is created
             public void onClick(View v) {
                 // this should make it possible for user to add images from the phone´s library
                 Intent intent = new Intent(MainActivity.this, Database.class);

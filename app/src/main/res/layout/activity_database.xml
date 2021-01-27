@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/catOne"
+            app:srcCompat="@drawable/cat_one"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -48,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/CatTwo"
+            app:srcCompat="@drawable/cat_two"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="252dp" />
 
@@ -75,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/CatThree3"
+            app:srcCompat="@drawable/cat_three3"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="482dp" />
 
