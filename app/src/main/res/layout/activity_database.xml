@@ -6,120 +6,139 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-
+    <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:stretchColumns="1"
         tools:context=".Database">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="163dp"
-            android:layout_marginTop="60dp"
-            android:contentDescription="@string/catone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/cat_one"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <TextView
-            android:id="@+id/textViewCat1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="@string/navn_hj_rdis"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="202dp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="163dp"
-            android:layout_marginTop="60dp"
-            android:contentDescription="@string/cattwo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/cat_two"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="252dp" />
-
-        <TextView
-            android:id="@+id/textViewCat2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="@string/navn_atle"
-            android:textColor="#050505"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.474"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="431dp" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="163dp"
-            android:layout_marginTop="60dp"
-            android:contentDescription="@string/catthree"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/cat_three3"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="482dp" />
-
-        <TextView
-            android:id="@+id/textViewCat3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="@string/navn_figaro"
-            android:textColor="#040404"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="662dp" />
-
-        <Button
-            android:id="@+id/buttonToAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/legg_til"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.163"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="747dp" />
-
-        <Button
-            android:id="@+id/buttonToRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/fjern"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.563"
-            app:layout_constraintStart_toEndOf="@+id/buttonToAdd"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="747dp" />
+        <!--- android:layout_height="wrap_content"-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="163dp"
+                android:layout_marginTop="60dp"
+                android:contentDescription="@string/catone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/cat_one"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="16dp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textViewCat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="@string/navn_hj_rdis"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="202dp" />
+        </TableRow>
+
+
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="163dp"
+                android:layout_marginTop="60dp"
+                android:contentDescription="@string/cattwo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/cat_two"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="252dp" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textViewCat2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="@string/navn_atle"
+                android:textColor="#050505"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.474"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="431dp" />
+        </TableRow>
+
+
+        <TableRow>
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="163dp"
+                android:layout_marginTop="60dp"
+                android:contentDescription="@string/catthree"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/cat_three3"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="482dp" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/textViewCat3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="@string/navn_figaro"
+                android:textColor="#040404"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="662dp" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/TableLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:stretchColumns="*">
+
+
+        <TableRow
+            android:id="@+id/TableRow01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonToAdd"
+                android:text="@string/legg_til" />
+
+            <Button
+                android:id="@+id/buttonToRemove"
+                android:text="@string/fjern"
+                app:layout_constraintStart_toEndOf="@+id/buttonToAdd" />
+        </TableRow>
+    </TableLayout>
+
+    <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </ScrollView>
