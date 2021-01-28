@@ -1,6 +1,8 @@
 package com.example.oblig1;
 
-public class Cat {
+import java.io.Serializable;
+
+public class Cat implements Serializable {
     private String navn;
     private Integer bilde;
 
