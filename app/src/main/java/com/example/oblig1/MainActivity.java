@@ -14,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO: A list to store the cats (photo and name)
+        //TODO: Put the 3 cats in the list (database)
+        //Send the list with the buttons
 
         Button btn1 = (Button)findViewById(R.id.buttonQuiz);       //The first button is created´"Ta quiz"
         btn1.setOnClickListener(new View.OnClickListener() {    //The first buttons action is created
