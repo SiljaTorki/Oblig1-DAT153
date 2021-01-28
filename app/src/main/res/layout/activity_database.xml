@@ -113,20 +113,7 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="662dp" />
         </TableRow>
-    </TableLayout>
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/TableLayout01"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:stretchColumns="*">
-
-
-        <TableRow
-            android:id="@+id/TableRow01"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/buttonToAdd"
@@ -136,9 +123,9 @@
                 android:id="@+id/buttonToRemove"
                 android:text="@string/fjern"
                 app:layout_constraintStart_toEndOf="@+id/buttonToAdd" />
-        </TableRow>
-    </TableLayout>
 
+
+    </TableLayout>
     <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </ScrollView>
