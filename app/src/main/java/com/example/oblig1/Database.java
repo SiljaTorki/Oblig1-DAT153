@@ -21,13 +21,27 @@ public class Database extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
 
-       // HashMap<Image,String> hm = new HashMap<Image,String>(); //Hashmap to find correct name for each image is not in use
+        // HashMap<Image,String> hm = new HashMap<Image,String>(); //Hashmap to find correct name for each image is not in use
+        //TODO: Create the view dynamic, maybe we need to use RecyclerView
+        // Creating Layouts Programmatically (Lecture 06, page 5)
 
+        //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
         btn1.setOnClickListener(new View.OnClickListener() {    //The first buttons action is created
             public void onClick(View v) {
                 //this should send the user to the add-activity
                 Intent intent = new Intent(Database.this, Add.class);
+                startActivity(intent);
+            }
+        });
+
+        //TODO: Add checkbox/radiobutton in layout
+        Button btn2 = (Button)findViewById(R.id.buttonToRemove);       //The second button is created´"Fjern"
+        btn2.setOnClickListener(new View.OnClickListener() {    //The second buttons action is created
+            public void onClick(View v) {
+                //TODO: Remove the Cat from the database list
+                //TODO: Update the view
+                Intent intent = new Intent(Database.this, Database.class);
                 startActivity(intent);
             }
         });
