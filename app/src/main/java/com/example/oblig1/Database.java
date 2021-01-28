@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class Database extends AppCompatActivity {
 
 
-    private ArrayList<Cat> catList = new ArrayList<>();  // A list to store the cats photos in
+    private ArrayList<Cat> catList;  // A list to store the cats photos in
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class Database extends AppCompatActivity {
         // HashMap<Image,String> hm = new HashMap<Image,String>(); //Hashmap to find correct name for each image is not in use
         //TODO: Create the view dynamic, maybe we need to use RecyclerView
         // Creating Layouts Programmatically (Lecture 06, page 5)
+        ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
 
         //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
@@ -47,8 +48,5 @@ public class Database extends AppCompatActivity {
         });
     }
 
-    //Method to add new cat-photos and names
-    public void addCat(Cat cat) {
-        catList.add(cat);
-    }
+
 }

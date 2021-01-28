@@ -19,6 +19,7 @@ public class Quiz extends AppCompatActivity {
     private Cat cat;
 
     private int correct = 0;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class Quiz extends AppCompatActivity {
         final int min = 0;
         final int max = catList.size();
 
-        int i = 0;
+
 
         Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
 
@@ -83,10 +84,21 @@ public class Quiz extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {    //The fourth button´s action is created
             public void onClick(View v) {
                 //Jumps to the next image
-                // on the last image, it should provide a score
-                //TODO: Update to next picture
-                //TODO: Empty the editText field
-                //TODO: if counter == size of list - Provide a score
+                if (i < catList.size()) {
+                    i++;
+                    Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
+
+                    // resize the bitmap to 150x100 (width x height)
+                    Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
+
+                    // loads the resized Bitmap into an ImageView
+                    ImageView image = (ImageView) findViewById(R.id.imageView);
+                    image.setImageBitmap(scaled);
+                    // on the last image, it should provide a score
+                    //TODO: Update to next picture
+                    //TODO: Empty the editText field
+                    //TODO: if counter == size of list - Provide a score
+                }
             }
         });
     }

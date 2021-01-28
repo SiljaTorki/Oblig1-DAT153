@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         catList.add(new Cat("Cat two", R.drawable.cat_two));
         catList.add(new Cat("Cat three", R.drawable.cat_three3));
 
-       // extras.putParcelableArrayList("liste", catList);
         //Send the list with the buttons
 
         Button btn1 = (Button)findViewById(R.id.buttonQuiz);       //The first button is created´"Ta quiz"
