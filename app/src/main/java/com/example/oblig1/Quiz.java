@@ -19,7 +19,8 @@ public class Quiz extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText1);
         int correct = 0;
         int counter = 0; //Counter for the quiz number, used to get correct image
-        //TODO: Liste av spm/bilder som er generert i tilfeldig rekkefølge (random)
+        //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
+        //TODO: Update to first picture
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The third button is created´"Sjekk svar"
