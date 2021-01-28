@@ -18,12 +18,15 @@ public class Quiz extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.editText1);
         int correct = 0;
+        int counter = 0; //Counter for the quiz number, used to get correct image
+        //TODO: Liste av spm/bilder som er generert i tilfeldig rekkefølge (random)
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The third button is created´"Sjekk svar"
         btn3.setOnClickListener(new View.OnClickListener() {    //The third buttons action is created
             public void onClick(View v) {
                 if(editText != null){
+                    //TODO: If som sjekker om svaret er riktig
 
                     CharSequence text = "Correct Answer!";
                     Context context = getApplicationContext();
@@ -46,6 +49,9 @@ public class Quiz extends AppCompatActivity {
             public void onClick(View v) {
                 //Jumps to the next image
                 // on the last image, it should provide a score
+                //TODO: Update to next picture
+                //TODO: Empty the editText field
+                //TODO: if counter == size of list - Provide a score
             }
         });
     }
