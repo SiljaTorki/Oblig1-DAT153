@@ -10,9 +10,12 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="68dp"
+        android:layout_marginEnd="21dp"
         android:text="@string/legg_til"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVelgBilde"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navn" />
 
@@ -30,18 +33,28 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="203dp"
-        android:layout_height="235dp"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="119dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="150dp"
+        android:contentDescription="@string/bilde"
+        app:layout_constraintBottom_toTopOf="@+id/buttonVelgBilde"
+        app:layout_constraintEnd_toEndOf="@+id/navn"
+        app:layout_constraintStart_toStartOf="@+id/navn"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/buttonVelgBilde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Velg bilde"
-        tools:layout_editor_absoluteX="212dp"
-        tools:layout_editor_absoluteY="504dp" />
+        android:layout_marginBottom="179dp"
+        android:text="@string/velg_bilde"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonAdd"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

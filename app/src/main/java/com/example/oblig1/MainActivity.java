@@ -3,6 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: A list to store the cats (photo and name)
         ArrayList<Cat> catList = new ArrayList<Cat>();
+        //Uri uri1 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_one");
+        //Uri uri2 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_two");
+        //Uri uri3 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_three3");
 
         //TODO: Put the 3 cats in the list (database)
         catList.add(new Cat("Cat one", R.drawable.cat_one));
