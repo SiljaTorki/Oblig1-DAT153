@@ -17,8 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
-    public CatList catList = new CatList();
-
+    //public CatList catList = new CatList();
+    private ArrayList<Cat> cats;
     TextView score;
 
     private int correct = 0;
@@ -34,9 +34,9 @@ public class Quiz extends AppCompatActivity {
         int counter = 0; //Counter for the quiz number, used to get correct image
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
        // ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
-         catList.setUp();
-        ArrayList<Cat> cats = catList.getCatList();
-
+         //catList.setUp();
+        //ArrayList<Cat> cats = catList.getCatList();
+        cats = CatList.getCatList();
         //TODO: Update to first picture
 
         // load a bitmap from the drawable folder

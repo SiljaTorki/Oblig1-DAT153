@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class CatList {
 
-    private ArrayList<Cat> catList;
+    private static ArrayList<Cat> catList;
+    //private ArrayList<Cat> catList;
 
     public CatList(){
         catList = new ArrayList<Cat>();
@@ -18,7 +19,7 @@ public class CatList {
         catList.add(cat);
     }
 
-    public ArrayList<Cat> getCatList() {
+    public static ArrayList<Cat> getCatList() {
         return catList;
     }
 

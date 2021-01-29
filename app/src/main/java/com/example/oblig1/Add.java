@@ -30,7 +30,7 @@ public class Add extends AppCompatActivity {
 
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
      //   ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
-
+        catList = CatList.getCatList();
 
 
         Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Legg til"

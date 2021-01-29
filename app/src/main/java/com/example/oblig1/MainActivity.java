@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //private CatList cats = new CatList();
-
+    public CatList catList = new CatList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
       //  cats.addCat("Cat one", uri1);
        // cats.addCat("Cat two", uri2);
         //cats.addCat("Cat three", uri3);
-
+        catList.setUp();
 
         //TODO: Put the 3 cats in the list (database)
         //catList.add(new Cat("Cat one", R.drawable.cat_one));
