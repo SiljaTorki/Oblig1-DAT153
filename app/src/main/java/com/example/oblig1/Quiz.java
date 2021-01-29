@@ -11,12 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
     private Cat cat;
+    TextView score;
 
     private int correct = 0;
     private int i = 0;
@@ -52,6 +54,7 @@ public class Quiz extends AppCompatActivity {
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The third button is created´"Sjekk svar"
         btn3.setOnClickListener(new View.OnClickListener() {    //The third buttons action is created
             public void onClick(View v) {
+                score = findViewById(R.id.quizScore);
                 if(editText != null){
                     //TODO: If som sjekker om svaret er riktig
                     String svar = editText.getText().toString();
@@ -66,6 +69,8 @@ public class Quiz extends AppCompatActivity {
 
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_SHORT;
+                    String quizScore = "Din score: " +correct;
+                    score.setText(quizScore);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
 
@@ -101,5 +106,7 @@ public class Quiz extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 }
