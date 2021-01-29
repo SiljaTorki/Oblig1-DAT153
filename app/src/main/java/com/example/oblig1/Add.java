@@ -29,7 +29,7 @@ public class Add extends AppCompatActivity {
         iv = (ImageView) findViewById(R.id.imageView4);
 
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
-        ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
+     //   ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
 
 
 

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //private CatList cats = new CatList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,18 +22,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Bundle extras = new Bundle();
+       // Bundle extras = new Bundle();
 
         //TODO: A list to store the cats (photo and name)
-        ArrayList<Cat> catList = new ArrayList<Cat>();
-        //Uri uri1 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_one");
-        //Uri uri2 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_two");
-        //Uri uri3 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_three3");
+        //CatList cats = new CatList();
+        //Uri uri1 = Uri.parse("android.resource://com.example.obli1/drawable/cat_one");
+      //  Uri uri2 = Uri.parse("android.resource://com.example.obli1/drawable/cat_two");
+      //  Uri uri3 = Uri.parse("android.resource://com.example.obli1/drawable/cat_three3");
+
+      //  cats.addCat("Cat one", uri1);
+       // cats.addCat("Cat two", uri2);
+        //cats.addCat("Cat three", uri3);
+
 
         //TODO: Put the 3 cats in the list (database)
-        catList.add(new Cat("Cat one", R.drawable.cat_one));
-        catList.add(new Cat("Cat two", R.drawable.cat_two));
-        catList.add(new Cat("Cat three", R.drawable.cat_three3));
+        //catList.add(new Cat("Cat one", R.drawable.cat_one));
+        //catList.add(new Cat("Cat two", R.drawable.cat_two));
+        //catList.add(new Cat("Cat three", R.drawable.cat_three3));
 
         //Send the list with the buttons
 
@@ -40,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //this should send the user to the quiz-activity
                 Intent intent = new Intent(MainActivity.this, Quiz.class);
-                intent.putExtra("liste", catList);
+               // intent.putExtra("liste", cats);
                 startActivity(intent);
             }
         });
@@ -51,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // this should make it possible for user to add images from the phone´s library
                 Intent intent = new Intent(MainActivity.this, Add.class);
-                intent.putExtra("list", catList);
+                //   intent.putExtra("list", catList);
                 startActivity(intent);
             }
         });
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // this should make it possible for user to add images from the phone´s library
                 Intent intent = new Intent(MainActivity.this, Database.class);
-                intent.putExtra("list", catList);
+               // intent.putExtra("list", catList);
                 startActivity(intent);
             }
         });

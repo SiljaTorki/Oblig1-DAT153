@@ -1,13 +1,15 @@
 package com.example.oblig1;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
-public class Cat implements Serializable {
+public class Cat {
     private String navn;
-    private Integer bilde;
+    private Uri bilde;
 
 
-    public Cat(String navn, Integer bilde) {
+    public Cat(String navn, Uri bilde) {
         this.navn=navn;
         this.bilde=bilde;
     }
@@ -16,7 +18,7 @@ public class Cat implements Serializable {
         return navn;
     }
 
-    public Integer getBilde() {
+    public Uri getBilde() {
         return bilde;
     }
 
@@ -24,7 +26,7 @@ public class Cat implements Serializable {
         this.navn = navn;
     }
 
-    public void setBilde(Integer bilde) {
+    public void setBilde(Uri bilde) {
         this.bilde = bilde;
     }
 }

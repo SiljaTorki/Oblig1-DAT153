@@ -17,7 +17,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
-    private Cat cat;
+    public CatList catList = new CatList();
+
     TextView score;
 
     private int correct = 0;
@@ -32,23 +33,29 @@ public class Quiz extends AppCompatActivity {
 
         int counter = 0; //Counter for the quiz number, used to get correct image
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
-        ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
+       // ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
+         catList.setUp();
+        ArrayList<Cat> cats = catList.getCatList();
+
         //TODO: Update to first picture
 
         // load a bitmap from the drawable folder
         final int min = 0;
-        final int max = catList.size();
+        final int max = cats.size();
 
 
 
-        Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
+        //Bitmap b = BitmapFactory.decodeResource(getResources(), cats.get(i).getBilde());
 
         // resize the bitmap to 150x100 (width x height)
-        Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
+       // Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
 
         // loads the resized Bitmap into an ImageView
-        ImageView image = (ImageView) findViewById(R.id.imageView);
-        image.setImageBitmap(scaled);
+       ImageView image = (ImageView) findViewById(R.id.imageView);
+       // image.setImageBitmap(scaled);
+
+
+        image.setImageURI(cats.get(i).getBilde());
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The third button is created´"Sjekk svar"
@@ -60,7 +67,7 @@ public class Quiz extends AppCompatActivity {
                     String svar = editText.getText().toString();
 
                     CharSequence text;
-                    if(catList.get(i).getNavn().equals(svar)){
+                    if(cats.get(i).getNavn().equals(svar)){
                         text = "Correct Answer!";
                         correct++;
                     }else{
@@ -89,16 +96,17 @@ public class Quiz extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {    //The fourth button´s action is created
             public void onClick(View v) {
                 //Jumps to the next image
-                if (i < catList.size()) {
+                if (i < cats.size()) {
                     i++;
-                    Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
+                   // Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
 
                     // resize the bitmap to 150x100 (width x height)
-                    Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
+                  //  Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
 
                     // loads the resized Bitmap into an ImageView
-                    ImageView image = (ImageView) findViewById(R.id.imageView);
-                    image.setImageBitmap(scaled);
+                    //ImageView image = (ImageView) findViewById(R.id.imageView);
+                    //image.setImageBitmap(scaled);
+                    image.setImageURI(cats.get(i).getBilde());
                     // on the last image, it should provide a score
                     //TODO: Update to next picture
                     //TODO: Empty the editText field
