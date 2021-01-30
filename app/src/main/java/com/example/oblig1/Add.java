@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Add extends AppCompatActivity {
     private ImageView iv;
     private String name;
     private Integer bilde;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +35,27 @@ public class Add extends AppCompatActivity {
         catList = CatList.getCatList();
 
 
-        Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Legg til"
+        Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Velg bilde"
         btn.setOnClickListener(new View.OnClickListener() {    //The action is created
 
                  public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                  startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }});}
+                }
+        });
+
+        Button btn2 = (Button)findViewById(R.id.buttonAdd);       //The button is created´"Legg til"
+        btn2.setOnClickListener(new View.OnClickListener() {    //The action is created
+
+            public void onClick(View v) {
+                EditText editText = (EditText)findViewById(R.id.navn);
+                name = editText.getText().toString();
+                //CatList.addCat(name, uri);
+                System.out.println("Antall: " + catList.size());
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -49,7 +64,7 @@ public class Add extends AppCompatActivity {
             case PICK_IMAGE_REQUEST:
                 if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
-
+                    uri = selectedImage;
                     // method 1
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);

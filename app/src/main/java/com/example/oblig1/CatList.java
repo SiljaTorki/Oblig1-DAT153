@@ -14,7 +14,7 @@ public class CatList {
         catList = new ArrayList<Cat>();
     }
 
-    public void addCat(String navn, Uri bilde){
+    public static void addCat(String navn, Uri bilde){
         Cat cat = new Cat(navn, bilde);
         catList.add(cat);
     }
