@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
-    //public CatList catList = new CatList();
+
     private ArrayList<Cat> cats;
     TextView score;
 
@@ -33,33 +33,23 @@ public class Quiz extends AppCompatActivity {
 
         int counter = 0; //Counter for the quiz number, used to get correct image
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
-       // ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
-         //catList.setUp();
-        //ArrayList<Cat> cats = catList.getCatList();
+
         cats = CatList.getCatList();
+
         //TODO: Update to first picture
 
-        // load a bitmap from the drawable folder
+
         final int min = 0;
         final int max = cats.size();
 
 
-
-        //Bitmap b = BitmapFactory.decodeResource(getResources(), cats.get(i).getBilde());
-
-        // resize the bitmap to 150x100 (width x height)
-       // Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
-
-        // loads the resized Bitmap into an ImageView
-       ImageView image = (ImageView) findViewById(R.id.imageView);
-       // image.setImageBitmap(scaled);
-
+        ImageView image = (ImageView) findViewById(R.id.imageView);
 
         image.setImageURI(cats.get(i).getBilde());
 
 
-        Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The third button is created´"Sjekk svar"
-        btn3.setOnClickListener(new View.OnClickListener() {    //The third buttons action is created
+        Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
+        btn3.setOnClickListener(new View.OnClickListener() {    //The  buttons action is created
             public void onClick(View v) {
                 score = findViewById(R.id.quizScore);
                 if(editText != null){
@@ -67,11 +57,11 @@ public class Quiz extends AppCompatActivity {
                     String svar = editText.getText().toString();
 
                     CharSequence text;
-                    if(cats.get(i).getNavn().equals(svar)){
-                        text = "Correct Answer!";
+                    if(cats.get(i).getNavn().equals(svar)){         //check if editText equals the text connected with the photo
+                        text = "Correct Answer!";                   //if it is correct, then a toast saying its correct
                         correct++;
                     }else{
-                        text = "Wrong Answer!";
+                        text = "Wrong Answer!";                      //if incorrect, the toast should say it is wrong
                     }
 
                     Context context = getApplicationContext();
@@ -82,35 +72,23 @@ public class Quiz extends AppCompatActivity {
                     toast.show();
 
 
-
-                    //check if editText equals the text connected with the photo
-                    //if it is correct, then a toast saying its correct, is going to appear
-                    //if incorrect, the toast should say it is wrong
-
                 }
             }
         });
 
 
-        Button btn4 = (Button)findViewById(R.id.buttonNeste);       //The fourth button is created "Neste"
-        btn4.setOnClickListener(new View.OnClickListener() {    //The fourth button´s action is created
+        Button btn4 = (Button)findViewById(R.id.buttonNeste);       //The button is created "Neste"
+        btn4.setOnClickListener(new View.OnClickListener() {    //The button´s action is created
             public void onClick(View v) {
-                //Jumps to the next image
-                if (i < cats.size()) {
+                //Jumps to the next image but stops at the last one
+                if (i < cats.size()-1) {
                     i++;
-                   // Bitmap b = BitmapFactory.decodeResource(getResources(), catList.get(i).getBilde());
 
-                    // resize the bitmap to 150x100 (width x height)
-                  //  Bitmap scaled = Bitmap.createScaledBitmap(b, 150, 100, true);
+                    image.setImageURI(cats.get(i).getBilde()); //Finds a new image
 
-                    // loads the resized Bitmap into an ImageView
-                    //ImageView image = (ImageView) findViewById(R.id.imageView);
-                    //image.setImageBitmap(scaled);
-                    image.setImageURI(cats.get(i).getBilde());
-                    // on the last image, it should provide a score
-                    //TODO: Update to next picture
-                    //TODO: Empty the editText field
-                    //TODO: if counter == size of list - Provide a score
+                    editText.getText().clear();    //Empty the editText field
+
+
                 }
             }
         });
