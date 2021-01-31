@@ -23,7 +23,7 @@ public class Quiz extends AppCompatActivity {
 
     private int correct = 0;
     private int counter = 1;
-    private int i = 0;
+    private int i = 0; // Position in the list
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +35,14 @@ public class Quiz extends AppCompatActivity {
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
 
         final int min = 0;
-        final int max = cats.size();
+        //final int max = cats.size();
 
-        cats = CatList.getCatList();
+        cats = CatList.getCatList(); // Get the full list from data structure
 
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
 
-        image.setImageBitmap(cats.get(i).getBilde());
+        image.setImageBitmap(cats.get(i).getBilde()); // Gets the first image from the list
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
@@ -51,7 +51,7 @@ public class Quiz extends AppCompatActivity {
                 score = findViewById(R.id.quizScore);
 
                 if(editText != null){
-                    String svar = editText.getText().toString();
+                    String svar = editText.getText().toString(); //gets the text from editText field
 
                     CharSequence text;
                     if(cats.get(i).getNavn().equals(svar)){         //check if editText equals the text connected with the photo
