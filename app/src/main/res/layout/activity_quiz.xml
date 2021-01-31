@@ -7,6 +7,17 @@
     tools:context=".Quiz">
 
     <TextView
+        android:id="@+id/quizCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <TextView
         android:id="@+id/quizScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

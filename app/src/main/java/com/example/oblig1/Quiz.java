@@ -20,6 +20,7 @@ public class Quiz extends AppCompatActivity {
 
     private ArrayList<Cat> cats;
     TextView score;
+    TextView count;
 
     private int correct = 0;
     private int counter = 1;
@@ -38,6 +39,12 @@ public class Quiz extends AppCompatActivity {
         //final int max = cats.size();
 
         cats = CatList.getCatList(); // Get the full list from data structure
+        int max = cats.size();
+
+        // Trakcing question
+        count = findViewById(R.id.quizCounter);
+        String quizCount = counter + "/" + max;
+        count.setText(quizCount);
 
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
@@ -80,6 +87,7 @@ public class Quiz extends AppCompatActivity {
 
                 if (i < cats.size()-1) {                        //Jumps to the next image but stops at the last one
                     i++;
+                    counter++;
 
                     image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image
 
