@@ -24,7 +24,6 @@ public class Add extends AppCompatActivity {
     private ImageView iv;
     private String name;
     private Bitmap image;
-    //private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,7 @@ public class Add extends AppCompatActivity {
         iv = (ImageView) findViewById(R.id.imageView4);
 
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
-     //   ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
-        catList = CatList.getCatList();
+        catList = CatList.getCatList(); // Get the full list from data structure
 
 
         Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Velg bilde"
@@ -87,7 +85,7 @@ public class Add extends AppCompatActivity {
             case PICK_IMAGE_REQUEST:
                 if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
-                    //uri = selectedImage;
+
                     // method 1
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
@@ -96,20 +94,6 @@ public class Add extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                    // method 2
-
-                    //try {
-                    //    InputStream imageStream = getContentResolver().openInputStream(selectedImage);
-                    //    Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
-                    //    imageStream.close(;
-                    //   iv.setImageBitmap(yourSelectedImage);
-                    //} catch (FileNotFoundException e) {
-                    //    e.printStackTrace();
-                    //}
-
-                    // method 3
-                    // iv.setImageURI(selectedImage);
                 }
                 break;
         }}
