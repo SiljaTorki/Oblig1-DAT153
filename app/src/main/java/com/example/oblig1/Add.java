@@ -41,15 +41,15 @@ public class Add extends AppCompatActivity {
         Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Velg bilde"
         btn.setOnClickListener(new View.OnClickListener() {            //The action is created
 
-                 public void onClick(View v) {                              //Make it possible for the user to add an image
+                 public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
-                    startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
                 }
         });
 
-        Button btn2 = (Button)findViewById(R.id.buttonAdd);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        Button btn2 = (Button)findViewById(R.id.buttonAdd);       //The button is created´"Legg til"
+        btn2.setOnClickListener(new View.OnClickListener() {      //The action is created
 
             public void onClick(View v) {
 
@@ -58,23 +58,23 @@ public class Add extends AppCompatActivity {
 
                 String text;
 
-                if(name != null && image != null) {                     //Checking that name and image have values
-                    CatList.addCat(name, image);                        //Adding image and name of cat to the arrayList
-                    //System.out.println("Antall: " + catList.size());  //Used for testing
+                if(name != null && image != null) {
+                    CatList.addCat(name, image);
+                    System.out.println("Antall: " + catList.size());
 
-                    text = "Bilde er lagt til!";                        //Toast-text if image is added
+                    text = "Bilde er lagt til!";
 
                 }else{
-                text = "Legg til text eller bilde";                     //Toast-text if name or image is missing
-                    }
+                text = "Legg til text eller bilde";
+                }
                 Context context = getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;                      //Says how long the Toast should last
-                Toast toast = Toast.makeText(context, text, duration);  //creating the Toast
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
 
-                toast.show();                                           //shows the toast
+                toast.show();
 
-                editText.getText().clear();                             //emptying the editText
-                iv.setImageResource(0);                                 //removing image
+                editText.getText().clear();
+                iv.setImageResource(0);
             }
 
         });

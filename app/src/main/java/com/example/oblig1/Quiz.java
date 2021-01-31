@@ -22,6 +22,7 @@ public class Quiz extends AppCompatActivity {
     TextView score;
 
     private int correct = 0;
+    private int counter = 1;
     private int i = 0;
 
     @Override
@@ -31,7 +32,6 @@ public class Quiz extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.editText1);
 
-        int counter = 0; //Counter for the quiz number, used to get correct image
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
 
         final int min = 0;
