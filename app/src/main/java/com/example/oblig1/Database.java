@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class Database extends AppCompatActivity {
 
-
-    private ArrayList<Cat> catList;  // A list to store the cats photos in
+    ListView listView;
+    private ArrayList<Cat> cats;  // A list to store the cats photos in
 
 
     @Override
@@ -22,6 +23,13 @@ public class Database extends AppCompatActivity {
 
         //TODO: Create the view dynamic, maybe we need to use RecyclerView
         // Creating Layouts Programmatically (Lecture 06, page 5)
+        listView = findViewById(R.id.listView);
+
+        // gats all the cats in a list
+        cats = CatList.getCatList();
+        CustomAdapter adapter = new CustomAdapter(cats,Database.this);
+        listView.setAdapter(adapter);
+
 
         //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"

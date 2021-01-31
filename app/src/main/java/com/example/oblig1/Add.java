@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class Add extends AppCompatActivity {
     private ArrayList<Cat> catList;  // A list to store the cats photos in
-    private static final int PICK_IMAGE_REQUEST = 100;
+    private static final int PICK_IMAGE_REQUEST = 100; // the request code defined as an instance variable
     private ImageView iv;
     private String name;
     private Bitmap image;
