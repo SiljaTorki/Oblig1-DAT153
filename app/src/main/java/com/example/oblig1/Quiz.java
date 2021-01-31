@@ -34,13 +34,10 @@ public class Quiz extends AppCompatActivity {
         int counter = 0; //Counter for the quiz number, used to get correct image
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
 
-        cats = CatList.getCatList();
-
-        //TODO: Update to first picture
-
-
         final int min = 0;
         final int max = cats.size();
+
+        cats = CatList.getCatList();
 
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
@@ -49,11 +46,11 @@ public class Quiz extends AppCompatActivity {
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
-        btn3.setOnClickListener(new View.OnClickListener() {    //The  buttons action is created
+        btn3.setOnClickListener(new View.OnClickListener() {       //The  buttons action is created
             public void onClick(View v) {
                 score = findViewById(R.id.quizScore);
+
                 if(editText != null){
-                    //TODO: If som sjekker om svaret er riktig
                     String svar = editText.getText().toString();
 
                     CharSequence text;
@@ -66,7 +63,7 @@ public class Quiz extends AppCompatActivity {
 
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_SHORT;
-                    String quizScore = "Din score: " +correct;
+                    String quizScore = "Din score: " +correct;       //Provides a score at the top of the application
                     score.setText(quizScore);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
@@ -77,16 +74,16 @@ public class Quiz extends AppCompatActivity {
         });
 
 
-        Button btn4 = (Button)findViewById(R.id.buttonNeste);       //The button is created "Neste"
+        Button btn4 = (Button)findViewById(R.id.buttonNeste);   //The button is created "Neste"
         btn4.setOnClickListener(new View.OnClickListener() {    //The button´s action is created
             public void onClick(View v) {
-                //Jumps to the next image but stops at the last one
-                if (i < cats.size()-1) {
+
+                if (i < cats.size()-1) {                        //Jumps to the next image but stops at the last one
                     i++;
 
-                    image.setImageBitmap(cats.get(i).getBilde()); //Finds a new image
+                    image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image
 
-                    editText.getText().clear();    //Empty the editText field
+                    editText.getText().clear();                     //Empty the editText field
 
 
                 }
