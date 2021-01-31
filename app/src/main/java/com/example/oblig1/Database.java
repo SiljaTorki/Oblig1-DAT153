@@ -20,10 +20,8 @@ public class Database extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
 
-        // HashMap<Image,String> hm = new HashMap<Image,String>(); //Hashmap to find correct name for each image is not in use
         //TODO: Create the view dynamic, maybe we need to use RecyclerView
         // Creating Layouts Programmatically (Lecture 06, page 5)
-       // ArrayList<Cat> catList = (ArrayList<Cat>) getIntent().getSerializableExtra("liste");
 
         //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
