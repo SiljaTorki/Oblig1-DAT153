@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
         //If catList is empty, the three original cat-images should be added to the catList
         if(catList == null){
             catList = new CatList();
+            //The images are stored as Bitmaps in the list
             catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_one)));
-            catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_two)));
-            catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_three3)));
+            catList.addCat("Cat two", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_two)));
+            catList.addCat("Cat three", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_three3)));
         }
 
 
