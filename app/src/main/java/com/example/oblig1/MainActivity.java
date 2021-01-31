@@ -3,6 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -13,34 +14,20 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //private CatList cats = new CatList();
-    public CatList catList = new CatList();
+    public CatList catList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(catList == null){
+            catList = new CatList();
+            catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_one)));
+            catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_two)));
+            catList.addCat("Cat one", (BitmapFactory.decodeResource(getResources(),R.drawable.cat_three3)));
+        }
 
-       // Bundle extras = new Bundle();
-
-        //TODO: A list to store the cats (photo and name)
-        //CatList cats = new CatList();
-        //Uri uri1 = Uri.parse("android.resource://com.example.obli1/drawable/cat_one");
-      //  Uri uri2 = Uri.parse("android.resource://com.example.obli1/drawable/cat_two");
-      //  Uri uri3 = Uri.parse("android.resource://com.example.obli1/drawable/cat_three3");
-
-      //  cats.addCat("Cat one", uri1);
-       // cats.addCat("Cat two", uri2);
-        //cats.addCat("Cat three", uri3);
-        catList.setUp();
-
-        //TODO: Put the 3 cats in the list (database)
-        //catList.add(new Cat("Cat one", R.drawable.cat_one));
-        //catList.add(new Cat("Cat two", R.drawable.cat_two));
-        //catList.add(new Cat("Cat three", R.drawable.cat_three3));
-
-        //Send the list with the buttons
 
         Button btn1 = (Button)findViewById(R.id.buttonQuiz);       //The first button is created´"Ta quiz"
         btn1.setOnClickListener(new View.OnClickListener() {    //The first buttons action is created

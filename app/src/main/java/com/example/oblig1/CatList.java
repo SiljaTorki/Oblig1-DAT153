@@ -1,5 +1,6 @@
 package com.example.oblig1;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import java.lang.reflect.Array;
@@ -14,7 +15,7 @@ public class CatList {
         catList = new ArrayList<Cat>();
     }
 
-    public static void addCat(String navn, Uri bilde){
+    public static void addCat(String navn, Bitmap bilde){
         Cat cat = new Cat(navn, bilde);
         catList.add(cat);
     }
@@ -27,14 +28,14 @@ public class CatList {
         this.catList = catList;
     }
 
-    public void setUp(){
+    //public void setUp(){
 
-        Uri uri1 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_one");
-        Uri uri2 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_two");
-        Uri uri3 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_three3");
+        //Uri uri1 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_one");
+        //Uri uri2 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_two");
+        //Uri uri3 = Uri.parse("android.resource://com.example.oblig1/drawable/cat_three3");
 
-        catList.add(new Cat("Cat one", uri1));
-        catList.add(new Cat("Cat two", uri2));
-        catList.add(new Cat("Cat three", uri3));
-    }
+        //catList.add(new Cat("Cat one", uri1));
+        //catList.add(new Cat("Cat two", uri2));
+        //catList.add(new Cat("Cat three", uri3));
+ //   }
 }

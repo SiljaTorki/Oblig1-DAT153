@@ -2,15 +2,18 @@ package com.example.oblig1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,8 +23,8 @@ public class Add extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 100;
     private ImageView iv;
     private String name;
-    private Integer bilde;
-    private Uri uri;
+    private Bitmap image;
+    //private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class Add extends AppCompatActivity {
 
 
         Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Velg bilde"
-        btn.setOnClickListener(new View.OnClickListener() {    //The action is created
+        btn.setOnClickListener(new View.OnClickListener() {            //The action is created
 
                  public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -46,14 +49,34 @@ public class Add extends AppCompatActivity {
         });
 
         Button btn2 = (Button)findViewById(R.id.buttonAdd);       //The button is created´"Legg til"
-        btn2.setOnClickListener(new View.OnClickListener() {    //The action is created
+        btn2.setOnClickListener(new View.OnClickListener() {      //The action is created
 
             public void onClick(View v) {
-                EditText editText = (EditText)findViewById(R.id.navn);
+
+                EditText editText = (EditText)findViewById(R.id.editTextNavn);
                 name = editText.getText().toString();
-                //CatList.addCat(name, uri);
-                System.out.println("Antall: " + catList.size());
+
+                String text;
+
+                if(name != null && image != null) {
+                    CatList.addCat(name, image);
+                    System.out.println("Antall: " + catList.size());
+
+                    text = "Bilde er lagt til!";
+
+                }else{
+                text = "Legg til text eller bilde";
+                }
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+
+                toast.show();
+
+                editText.getText().clear();
+                iv.setImageResource(0);
             }
+
         });
     }
 
@@ -64,10 +87,11 @@ public class Add extends AppCompatActivity {
             case PICK_IMAGE_REQUEST:
                 if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
-                    uri = selectedImage;
+                    //uri = selectedImage;
                     // method 1
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                        image = bitmap;
                         iv.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,39 +11,35 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginEnd="80dp"
         android:text="@string/legg_til"
-        app:layout_constraintEnd_toStartOf="@+id/buttonVelgBilde"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navn" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonVelgBilde"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/navn"
+        android:id="@+id/editTextNavn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
-        android:layout_marginBottom="292dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="252dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="284dp"
+        android:layout_height="293dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="119dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="150dp"
         android:contentDescription="@string/bilde"
         app:layout_constraintBottom_toTopOf="@+id/buttonVelgBilde"
-        app:layout_constraintEnd_toEndOf="@+id/navn"
-        app:layout_constraintStart_toStartOf="@+id/navn"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNavn"
+        app:layout_constraintStart_toStartOf="@+id/editTextNavn"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -53,8 +50,9 @@
         android:layout_marginBottom="179dp"
         android:text="@string/velg_bilde"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonAdd"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

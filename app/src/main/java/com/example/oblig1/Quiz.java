@@ -45,7 +45,7 @@ public class Quiz extends AppCompatActivity {
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
 
-        image.setImageURI(cats.get(i).getBilde());
+        image.setImageBitmap(cats.get(i).getBilde());
 
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
@@ -84,7 +84,7 @@ public class Quiz extends AppCompatActivity {
                 if (i < cats.size()-1) {
                     i++;
 
-                    image.setImageURI(cats.get(i).getBilde()); //Finds a new image
+                    image.setImageBitmap(cats.get(i).getBilde()); //Finds a new image
 
                     editText.getText().clear();    //Empty the editText field
 

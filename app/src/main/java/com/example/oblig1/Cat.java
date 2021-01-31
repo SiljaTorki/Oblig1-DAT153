@@ -1,15 +1,16 @@
 package com.example.oblig1;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import java.io.Serializable;
 
 public class Cat {
     private String navn;
-    private Uri bilde;
+    private Bitmap bilde;
 
 
-    public Cat(String navn, Uri bilde) {
+    public Cat(String navn, Bitmap bilde) {
         this.navn=navn;
         this.bilde=bilde;
     }
@@ -18,7 +19,7 @@ public class Cat {
         return navn;
     }
 
-    public Uri getBilde() {
+    public Bitmap getBilde() {
         return bilde;
     }
 
@@ -26,7 +27,7 @@ public class Cat {
         this.navn = navn;
     }
 
-    public void setBilde(Uri bilde) {
+    public void setBilde(Bitmap bilde) {
         this.bilde = bilde;
     }
 }
