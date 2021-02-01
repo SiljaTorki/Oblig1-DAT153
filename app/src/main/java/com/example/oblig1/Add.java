@@ -32,7 +32,6 @@ public class Add extends AppCompatActivity {
 
         iv = (ImageView) findViewById(R.id.imageView4);
 
-        //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
         catList = CatList.getCatList(); // Get the full list from data structure
 
 
@@ -59,7 +58,6 @@ public class Add extends AppCompatActivity {
 
                 if(!name.equals("") && image != null) {                   //Checking that name and image have values
                     CatList.addCat(name, image);                      //Adding image and name of cat to the arrayList
-                    System.out.println("Antall: " + catList.size());  //Used for testing
                     lagtTil = true;
                     text = "Bilde er lagt til!";                       //Toast-text if image is added
 
@@ -100,17 +98,4 @@ public class Add extends AppCompatActivity {
                 }
                 break;
         }}
-
-        //Method to add new cat-photos and names
-        public void addCat (Cat cat){
-            catList.add(cat);
-        }
-
-        //TODO: Add Cat button:
-        // Create a new Cat object with the Picture and name
-        // Add the Cat to the database list
-
-        //TODO: Choose picture button:
-        // Use the built in feature
-        // Add the picture to the ImageView
     }
