@@ -27,7 +27,11 @@ public class Database extends AppCompatActivity {
 
         // gats all the cats in a list
         cats = CatList.getCatList();
+
+        // Creates array adapter
         CustomAdapter adapter = new CustomAdapter(cats,Database.this);
+
+        //Lists all the cats
         listView.setAdapter(adapter);
 
 
