@@ -42,7 +42,7 @@ public class Quiz extends AppCompatActivity {
         cats = CatList.getCatList(); // Get the full list from data structure
         int max = cats.size();
 
-        // Trakcing question
+        // Tracking question
         count = findViewById(R.id.quizCounter);
         String quizCount = counter + "/" + max;
         count.setText(quizCount);
@@ -51,7 +51,6 @@ public class Quiz extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.imageView);
 
         image.setImageBitmap(cats.get(i).getBilde()); // Gets the first image from the list
-
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
         btn3.setOnClickListener(new View.OnClickListener() {       //The  buttons action is created
@@ -76,8 +75,6 @@ public class Quiz extends AppCompatActivity {
                     Toast toast = Toast.makeText(context, text, duration);
 
                     toast.show();
-
-
                 }
             }
         });
@@ -96,12 +93,8 @@ public class Quiz extends AppCompatActivity {
                     image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image
 
                     editText.getText().clear();                     //Empty the editText field
-
-
                 }
             }
         });
-
-
     }
 }
