@@ -43,6 +43,10 @@ public class CustomAdapter extends ArrayAdapter<Cat> {
         return position;
     }
 
+    public boolean[] getCheckBoxStates() {
+        return checkBoxState;
+    }
+
     private static class ViewHolder {
         TextView tv;
         ImageView img;
