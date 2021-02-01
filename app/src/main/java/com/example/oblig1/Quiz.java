@@ -35,7 +35,6 @@ public class Quiz extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.editText1);
 
-        //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
         original = CatList.getCatList(); // Get the full list from data structure
         int max = original.size();
 
@@ -44,7 +43,6 @@ public class Quiz extends AppCompatActivity {
         //Loop that generates a random list
         for(int j = 0; j < original.size(); j++) {
             tall = (int) (Math.random()*original.size());
-            System.out.println("Tall: " + tall + " j: " + j + " max: " + max); //fake debug
             if(!cats.contains(original.get(tall))) //Check if it already exist
                 cats.add(j, original.get(tall)); //Add to the list
             else
