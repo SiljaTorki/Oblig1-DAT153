@@ -47,6 +47,11 @@ public class Quiz extends AppCompatActivity {
         String quizCount = counter + "/" + max;
         count.setText(quizCount);
 
+        //Provides a score at the top of the application
+        score = findViewById(R.id.quizScore);
+        String quizScore = "Din score: " +correct;
+        score.setText(quizScore);
+
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
 
@@ -55,25 +60,23 @@ public class Quiz extends AppCompatActivity {
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
         btn3.setOnClickListener(new View.OnClickListener() {       //The  buttons action is created
             public void onClick(View v) {
-                score = findViewById(R.id.quizScore);
 
                 if(editText != null){
                     String svar = editText.getText().toString(); //gets the text from editText field
 
                     CharSequence text;
                     if(cats.get(i).getNavn().equals(svar)){         //check if editText equals the text connected with the photo
-                        text = "Rett svar!";                   //if it is correct, then a toast saying its correct
+                        text = "Rett svar!";                        //if it is correct, then a toast saying its correct
                         correct++;
                     }else{
-                        text = "Feil svar!";                      //if incorrect, the toast should say it is wrong
+                        text = "Feil svar!";                        //if incorrect, the toast should say it is wrong
                     }
 
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_SHORT;
-                    String quizScore = "Din score: " +correct;       //Provides a score at the top of the application
+                    String quizScore = "Din score: " +correct;       //Updating the score
                     score.setText(quizScore);
                     Toast toast = Toast.makeText(context, text, duration);
-
                     toast.show();
                 }
             }
