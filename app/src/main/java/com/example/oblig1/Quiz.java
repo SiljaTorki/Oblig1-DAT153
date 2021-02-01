@@ -90,7 +90,7 @@ public class Quiz extends AppCompatActivity {
                 if (i < cats.size()-1) {                        //Jumps to the next image but stops at the last one
                     i++;
                     counter++;
-                    String quizCount = counter + "/" + max;
+                    String quizCount = counter + "/" + max;     //Updates the counter
                     count.setText(quizCount);
 
                     image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image

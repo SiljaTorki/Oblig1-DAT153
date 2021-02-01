@@ -55,15 +55,16 @@ public class Add extends AppCompatActivity {
                 name = editText.getText().toString();
 
                 String text;
+                boolean lagtTil = false;
 
-                if(name != null && image != null) {                   //Checking that name and image have values
+                if(!name.equals("") && image != null) {                   //Checking that name and image have values
                     CatList.addCat(name, image);                      //Adding image and name of cat to the arrayList
                     System.out.println("Antall: " + catList.size());  //Used for testing
-
+                    lagtTil = true;
                     text = "Bilde er lagt til!";                       //Toast-text if image is added
 
                 }else{
-                text = "Legg til text eller bilde";                    //Toast-text if name or image is missing
+                    text = "Legg til text eller bilde";                    //Toast-text if name or image is missing
                 }
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;                      //Says how long the Toast should last
@@ -71,8 +72,10 @@ public class Add extends AppCompatActivity {
 
                 toast.show();
 
-                editText.getText().clear();                              //emptying the editText
-                iv.setImageResource(0);                                   //removing image
+                if(lagtTil){                                                  //If image is not added
+                    editText.getText().clear();                              //empty the editText
+                    iv.setImageResource(0);                                   //remove image
+                }
             }
 
         });
