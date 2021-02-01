@@ -18,8 +18,6 @@
         tools:context=".Database">
 
 
-
-
         <TableRow
             android:id="@+id/TableRow02"
             android:layout_width="match_parent"
@@ -41,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/fjern"
+                android:theme="@style/Button.Red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buttonToAdd"
@@ -55,7 +54,6 @@
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
-
 
 
 </LinearLayout>

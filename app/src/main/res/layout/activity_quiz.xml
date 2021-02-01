@@ -19,13 +19,14 @@
 
     <TextView
         android:id="@+id/quizScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="17dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="50dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="20dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -48,7 +49,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="105dp"
-        android:text="Sjekk svar"
+        android:text="@string/sjekk_svar"
+        android:theme="@style/Button.Red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.282"
@@ -74,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="46dp"
-        android:text="Neste"
+        android:text="@string/neste"
         app:layout_constraintStart_toEndOf="@+id/buttonSvar"
         app:layout_constraintTop_toBottomOf="@+id/editText1" />
 

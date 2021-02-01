@@ -12,18 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginBottom="74dp"
-        android:background="#FFFFFF"
         android:text="@string/ta_quizen"
-        app:iconTint="#FFFFFF"
+        android:theme="@style/Button.Green"
         app:layout_constraintBottom_toTopOf="@+id/buttonBilde"
         app:layout_constraintStart_toStartOf="@+id/buttonBilde"
-        app:rippleColor="#FAFAFA"
-        app:strokeColor="#FFFFFF" />
+        />
 
     <Button
         android:id="@+id/buttonBilde"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:theme="@style/Button.Green"
         android:layout_marginBottom="314dp"
         android:text="@string/legg_til_bilde"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="82dp"
+        android:theme="@style/Button.Green"
         android:text="@string/database"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

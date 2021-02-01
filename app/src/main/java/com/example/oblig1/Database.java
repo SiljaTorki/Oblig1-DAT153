@@ -33,7 +33,7 @@ public class Database extends AppCompatActivity {
 
         //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
-        btn1.setOnClickListener(new View.OnClickListener() {    //The first buttons action is created
+        btn1.setOnClickListener(new View.OnClickListener() {        //The first buttons action is created
             public void onClick(View v) {
                 //this should send the user to the add-activity
                 Intent intent = new Intent(Database.this, Add.class);
@@ -43,7 +43,7 @@ public class Database extends AppCompatActivity {
 
         //TODO: Add checkbox/radiobutton in layout
         Button btn2 = (Button)findViewById(R.id.buttonToRemove);       //The second button is created´"Fjern"
-        btn2.setOnClickListener(new View.OnClickListener() {    //The second buttons action is created
+        btn2.setOnClickListener(new View.OnClickListener() {           //The second buttons action is created
             public void onClick(View v) {
                 //TODO: Remove the Cat from the database list
                 //TODO: Update the view

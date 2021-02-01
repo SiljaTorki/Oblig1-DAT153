@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,10 +63,10 @@ public class Quiz extends AppCompatActivity {
 
                     CharSequence text;
                     if(cats.get(i).getNavn().equals(svar)){         //check if editText equals the text connected with the photo
-                        text = "Correct Answer!";                   //if it is correct, then a toast saying its correct
+                        text = "Rett svar!";                   //if it is correct, then a toast saying its correct
                         correct++;
                     }else{
-                        text = "Wrong Answer!";                      //if incorrect, the toast should say it is wrong
+                        text = "Feil svar!";                      //if incorrect, the toast should say it is wrong
                     }
 
                     Context context = getApplicationContext();
@@ -73,6 +74,7 @@ public class Quiz extends AppCompatActivity {
                     String quizScore = "Din score: " +correct;       //Provides a score at the top of the application
                     score.setText(quizScore);
                     Toast toast = Toast.makeText(context, text, duration);
+
                     toast.show();
 
 
@@ -88,6 +90,8 @@ public class Quiz extends AppCompatActivity {
                 if (i < cats.size()-1) {                        //Jumps to the next image but stops at the last one
                     i++;
                     counter++;
+                    String quizCount = counter + "/" + max;
+                    count.setText(quizCount);
 
                     image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image
 

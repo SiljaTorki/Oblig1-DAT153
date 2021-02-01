@@ -17,4 +17,6 @@
     <string name="catthree">CatThree</string>
     <string name="velg_bilde">Velg bilde</string>
     <string name="bilde">Bilde</string>
+    <string name="sjekk_svar">Sjekk svar</string>
+    <string name="neste">Neste</string>
 </resources>
