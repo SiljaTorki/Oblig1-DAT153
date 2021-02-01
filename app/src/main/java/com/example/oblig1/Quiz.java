@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
 
+    private ArrayList<Cat> original;
     private ArrayList<Cat> cats;
     TextView score;
     TextView count;
@@ -35,12 +36,20 @@ public class Quiz extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText1);
 
         //TODO: Liste av navn/bilder som er generert i tilfeldig rekkefølge (random)
+        original = CatList.getCatList(); // Get the full list from data structure
+        int max = original.size();
 
-        final int min = 0;
-        //final int max = cats.size();
-
-        cats = CatList.getCatList(); // Get the full list from data structure
-        int max = cats.size();
+        int tall;
+        cats = new ArrayList<Cat>(original.size());
+        //Loop that generates a random list
+        for(int j = 0; j < original.size(); j++) {
+            tall = (int) (Math.random()*original.size());
+            System.out.println("Tall: " + tall + " j: " + j + " max: " + max); //fake debug
+            if(!cats.contains(original.get(tall))) //Check if it already exist
+                cats.add(j, original.get(tall)); //Add to the list
+            else
+                j--; //To secure that you get all cats transferred to the new list
+        }
 
         // Tracking question
         count = findViewById(R.id.quizCounter);
