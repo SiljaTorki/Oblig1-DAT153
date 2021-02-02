@@ -22,8 +22,7 @@ public class Database extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
 
-        //TODO: Create the view dynamic, maybe we need to use RecyclerView
-        // Creating Layouts Programmatically (Lecture 06, page 5)
+        //Create the view dynamic
         listView = findViewById(R.id.listView);
 
         // gats all the cats in a list
@@ -46,31 +45,28 @@ public class Database extends AppCompatActivity {
             }
         });
 
-        //TODO: Add checkbox/radiobutton in layout
-        Button btn2 = (Button)findViewById(R.id.buttonToRemove);       //The second button is created´"Fjern"
-        btn2.setOnClickListener(new View.OnClickListener() {           //The second buttons action is created
+        //Delete the selected cats
+        Button btn2 = (Button)findViewById(R.id.buttonToRemove);       //The button is created´"Fjern"
+        btn2.setOnClickListener(new View.OnClickListener() {           //The button´s action is created
             public void onClick(View v) {
                 CheckBox selectCat;
                 selectCat = (CheckBox) findViewById(R.id.checkBox1);
-                //TODO: Remove the Cat from the database list
-                //ArrayList<Cat> updatedList = new ArrayList<>(); //initialize the second ArrayList
 
+                // Remove the Cat from the database list
                 int count = listView.getCount();  //number of my ListView items
                 int deleted = 0;
                 for (int i = 0; i < count; i++) {
                     if(adapter.getCheckBoxStates()[i]) {
                         cats.remove(cats.get(i-deleted));
                         deleted++;
-                        System.out.println("i: " + i + " sletta"); //fake debug
-                        //Log.e("TEST", String.valueOf(cats.get(i)));
                     }
                 }
 
 
                 CustomAdapter adapter2 = new CustomAdapter(cats, Database.this);
                 adapter2.getCheckBoxStates();
+                //Update the view
                 listView.setAdapter(adapter2);
-                //TODO: Update the view
                 Intent intent = new Intent(Database.this, Database.class);
                 startActivity(intent);
             }
