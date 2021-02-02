@@ -61,8 +61,8 @@ public class Quiz extends AppCompatActivity {
 
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
-
-        image.setImageBitmap(cats.get(i).getBilde()); // Gets the first image from the list
+        if(max > 0)
+            image.setImageBitmap(cats.get(i).getBilde()); // Gets the first image from the list
 
         Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
         btn3.setOnClickListener(new View.OnClickListener() {       //The  buttons action is created
