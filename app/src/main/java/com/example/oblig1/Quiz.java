@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,19 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.domain.CatList;
+import com.example.oblig1.hjelpeklasse.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz extends AppCompatActivity {
 
-    private List<Cat> original;
     private List<Cat> cats;
+    private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
     TextView score;
     TextView count;
 
-    private int correct = 0;
     private int counter = 1;
     private int i = 0; // Position in the list
 
@@ -35,19 +32,8 @@ public class Quiz extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.editText1);
 
-        original = CatList.getCatList(); // Get the full list from data structure
-        int max = original.size();
-
-        int tall;
-        cats = new ArrayList<Cat>(original.size());
-        //Loop that generates a random list
-        for(int j = 0; j < original.size(); j++) {
-            tall = (int) (Math.random()*original.size());
-            if(!cats.contains(original.get(tall))) //Check if it already exist
-                cats.add(j, original.get(tall)); //Add to the list
-            else
-                j--; //To secure that you get all cats transferred to the new list
-        }
+        cats = quizh.randomList();          //Creates a randomlist with the cat images
+        int max = cats.size();
 
         // Tracking question
         count = findViewById(R.id.quizCounter);
@@ -56,54 +42,49 @@ public class Quiz extends AppCompatActivity {
 
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
-        String quizScore = "Din score: " +correct;
+        String quizScore = "Din score: " +quizh.getCorrect();
         score.setText(quizScore);
 
-
         ImageView image = (ImageView) findViewById(R.id.imageView);
+
         if(max > 0)
-            image.setImageBitmap(cats.get(i).getBilde()); // Gets the first image from the list
+            image.setImageBitmap(cats.get(i).getBilde());       // Gets the first image from the list
 
-        Button btn3 = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
-        btn3.setOnClickListener(new View.OnClickListener() {       //The  buttons action is created
-            public void onClick(View v) {
 
-                if(editText != null){
-                    String svar = editText.getText().toString(); //gets the text from editText field
+        Button btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
 
-                    CharSequence text;
-                    if(cats.get(i).getNavn().equals(svar)){         //check if editText equals the text connected with the photo
-                        text = "Rett svar!";                        //if it is correct, then a toast saying its correct
-                        correct++;
-                    }else{
-                        text = "Feil svar!";                        //if incorrect, the toast should say it is wrong
-                    }
+        //Edited to use a lambda expression
+        btnCheckAnswer.setOnClickListener(v -> {
+            CharSequence response = null;
 
-                    Context context = getApplicationContext();
-                    int duration = Toast.LENGTH_SHORT;
-                    String quizScore = "Din score: " +correct;       //Updating the score
-                    score.setText(quizScore);
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
+            if(editText != null) {
+                String answer = editText.getText().toString();                  //gets the text from editText field
+                response = quizh.checkAnswer(answer, cats.get(i).getNavn());    // checking the user´s answer to
             }
+
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+                String quizScore1 = "Din score: " + quizh.getCorrect();       //Updating the score by calling getCorrect() from QuizHelper
+                score.setText(quizScore1);
+                Toast toast = Toast.makeText(context, response, duration);
+                toast.show();
+
         });
 
 
-        Button btn4 = (Button)findViewById(R.id.buttonNeste);   //The button is created "Neste"
-        btn4.setOnClickListener(new View.OnClickListener() {    //The button´s action is created
-            public void onClick(View v) {
+        Button btnNext = (Button)findViewById(R.id.buttonNeste);    //The button is created "Neste"
+        //Edited to use lambda expression
+        btnNext.setOnClickListener(v -> {
 
-                if (i < cats.size()-1) {                        //Jumps to the next image but stops at the last one
-                    i++;
-                    counter++;
-                    String quizCount = counter + "/" + max;     //Updates the counter
-                    count.setText(quizCount);
+            if (i < cats.size()-1) {         //Jumps to the next image but stops at the last one
+                i++;
+                counter++;
+                String quizCount1 = counter + "/" + max;     //Updates the counter
+                count.setText(quizCount1);
 
-                    image.setImageBitmap(cats.get(i).getBilde());   //Finds a new image
+                image.setImageBitmap(cats.get(i).getBilde());       //Finds a new image
 
-                    editText.getText().clear();                     //Empty the editText field
-                }
+                editText.getText().clear();          //Empty the editText field
             }
         });
     }
