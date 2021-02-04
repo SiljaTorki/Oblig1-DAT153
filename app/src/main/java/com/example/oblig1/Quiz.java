@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -54,7 +55,7 @@ public class Quiz extends AppCompatActivity {
         Button btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
 
         //Edited to use a lambda expression
-        btnCheckAnswer.setOnClickListener(v -> {
+        btnCheckAnswer.setOnClickListener((View v) -> {
             CharSequence response = null;
 
             if(editText != null) {
@@ -74,7 +75,7 @@ public class Quiz extends AppCompatActivity {
 
         Button btnNext = (Button)findViewById(R.id.buttonNeste);    //The button is created "Neste"
         //Edited to use lambda expression
-        btnNext.setOnClickListener(v -> {
+        btnNext.setOnClickListener((View v) -> {
 
             if (i < cats.size()-1) {         //Jumps to the next image but stops at the last one
                 i++;
