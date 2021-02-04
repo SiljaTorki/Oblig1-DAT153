@@ -19,4 +19,9 @@
     <style name="Button.Red" parent="Theme.AppCompat">
         <item name="colorPrimary">#AF1C1C</item>
     </style>
+    <style name="Button.Blue" parent="Theme.AppCompat">
+        <item name="colorPrimary">#03A9F4</item>
+    </style>
+
+
 </resources>

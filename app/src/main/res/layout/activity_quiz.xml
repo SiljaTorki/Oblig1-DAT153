@@ -52,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="105dp"
         android:text="@string/sjekk_svar"
-        android:theme="@style/Button.Red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.282"
@@ -79,6 +78,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="46dp"
         android:text="@string/neste"
+        android:theme="@style/Button.Blue"
         app:layout_constraintStart_toEndOf="@+id/buttonSvar"
         app:layout_constraintTop_toBottomOf="@+id/editText1" />
 
