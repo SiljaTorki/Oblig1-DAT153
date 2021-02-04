@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,10 +55,27 @@ public class Quiz extends AppCompatActivity {
         String quizScore = "Din score: " + quizh.getCorrect();
         score.setText(quizScore);
 
+        //Used for the toasts
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        String noImage = "No quiz available!";
+
+
         // Gets the first image from the list
         if(max > 0)
             image.setImageBitmap(cats.get(i).getBilde());
+        else {
+            //Removing all the visible elements on the screen if there are no images available
+            btnCheckAnswer.setVisibility(View.GONE);
+            btnNext.setVisibility(View.GONE);
+            image.setVisibility(View.GONE);
+            count.setVisibility(View.GONE);
+            score.setVisibility(View.GONE);
 
+            Toast toast = Toast.makeText(context, noImage, duration);
+            toast.show();
+
+        }
 
         //Checking the answer of the user´s input, by using a lambda expression
         btnCheckAnswer.setOnClickListener((View v) -> {
@@ -71,9 +89,6 @@ public class Quiz extends AppCompatActivity {
                 String answer = editText.getText().toString();
                 response = quizh.checkAnswer(answer, cats.get(i).getNavn());
             }
-
-                Context context = getApplicationContext();
-                int duration = Toast.LENGTH_SHORT;
 
                 //Updating the score by calling getCorrect() from QuizHelper
                 String quizScore1 = "Din score: " + quizh.getCorrect();
