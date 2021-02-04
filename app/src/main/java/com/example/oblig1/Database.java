@@ -9,12 +9,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
+import com.example.oblig1.domain.Cat;
+import com.example.oblig1.domain.CatList;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Database extends AppCompatActivity {
 
     ListView listView;
-    private ArrayList<Cat> cats;  // A list to store the cats photos in
+    private List<Cat> cats;  // A list to store the cats photos in
 
 
     @Override
@@ -37,12 +41,11 @@ public class Database extends AppCompatActivity {
 
         //Send the list with the button
         Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
-        btn1.setOnClickListener(new View.OnClickListener() {        //The first buttons action is created
-            public void onClick(View v) {
-                //this should send the user to the add-activity
-                Intent intent = new Intent(Database.this, Add.class);
-                startActivity(intent);
-            }
+        //The first buttons action is created
+        btn1.setOnClickListener((View v) -> {
+            //this should send the user to the add-activity
+            Intent intent = new Intent(Database.this, Add.class);
+            startActivity(intent);
         });
 
         //Delete the selected cats

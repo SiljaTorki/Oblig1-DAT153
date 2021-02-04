@@ -4,24 +4,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.oblig1.domain.Cat;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Cat> {
-    private ArrayList<Cat> cats;
+    private List<Cat> cats;
     Context context;
 
     // Boolean array for storing the state of the checkbox
     boolean[] checkBoxState;
 
-    public CustomAdapter(ArrayList<Cat> cats, Context context) {
+    public CustomAdapter(List<Cat> cats, Context context) {
         super(context, R.layout.list_item, cats);
         this.cats = cats;
         this.context = context;

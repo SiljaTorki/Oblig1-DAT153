@@ -1,4 +1,4 @@
-package com.example.oblig1;
+package com.example.oblig1.domain;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,8 +11,8 @@ public class Cat {
 
 
     public Cat(String navn, Bitmap bilde) {
-        this.navn=navn;
-        this.bilde=bilde;
+        this.navn = navn;
+        this.bilde = bilde;
     }
 
     public String getNavn() {
@@ -21,13 +21,5 @@ public class Cat {
 
     public Bitmap getBilde() {
         return bilde;
-    }
-
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public void setBilde(Bitmap bilde) {
-        this.bilde = bilde;
     }
 }

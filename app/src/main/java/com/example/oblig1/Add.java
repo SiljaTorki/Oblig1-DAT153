@@ -8,18 +8,21 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.oblig1.domain.Cat;
+import com.example.oblig1.domain.CatList;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Add extends AppCompatActivity {
-    private ArrayList<Cat> catList;  // A list to store the cats photos in
+    private List<Cat> catList;  // A list to store the cats photos in
     private static final int PICK_IMAGE_REQUEST = 100; // the request code defined as an instance variable
     private ImageView iv;
     private String name;

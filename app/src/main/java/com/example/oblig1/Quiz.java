@@ -3,11 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.oblig1.domain.Cat;
+import com.example.oblig1.domain.CatList;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Quiz extends AppCompatActivity {
 
-    private ArrayList<Cat> original;
-    private ArrayList<Cat> cats;
+    private List<Cat> original;
+    private List<Cat> cats;
     TextView score;
     TextView count;
 
