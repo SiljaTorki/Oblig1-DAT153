@@ -8,35 +8,45 @@
 
     <Button
         android:id="@+id/buttonQuiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="74dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="95dp"
         android:text="@string/ta_quizen"
+        android:textSize="24sp"
         android:theme="@style/Button.Green"
         app:layout_constraintBottom_toTopOf="@+id/buttonBilde"
-        app:layout_constraintStart_toStartOf="@+id/buttonBilde"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonBilde"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/Button.Green"
-        android:layout_marginBottom="314dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="316dp"
         android:text="@string/legg_til_bilde"
+        android:textSize="24sp"
+        android:theme="@style/Button.Green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonQuiz" />
 
     <Button
         android:id="@+id/buttonDatabase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
-        android:theme="@style/Button.Green"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="104dp"
         android:text="@string/database"
+        android:textSize="24sp"
+        android:theme="@style/Button.Green"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonBilde" />
 </androidx.constraintlayout.widget.ConstraintLayout>

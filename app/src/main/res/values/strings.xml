@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Oblig1</string>
-    <string name="legg_til_bilde">Legg til bilde</string>
-    <string name="ta_quizen">Ta quizen</string>
+    <string name="legg_til_bilde">Add image</string>
+    <string name="ta_quizen">Quiz</string>
     <string name="database">Database</string>
-    <string name="legg_til">Legg til</string>
+    <string name="legg_til">Add image</string>
     <string name="name">Name</string>
     <string name="navn_katt_3">Navn: Katt 3</string>
     <string name="navn_katt_2">Navn: Katt 2</string>
@@ -15,8 +15,8 @@
     <string name="catone">CatOne</string>
     <string name="cattwo">CatTwo</string>
     <string name="catthree">CatThree</string>
-    <string name="velg_bilde">Velg bilde</string>
+    <string name="velg_bilde">Choose image</string>
     <string name="bilde">Bilde</string>
-    <string name="sjekk_svar">Sjekk svar</string>
-    <string name="neste">Neste</string>
+    <string name="sjekk_svar">Check answer</string>
+    <string name="neste">Next</string>
 </resources>

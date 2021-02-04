@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNavn"
+        android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -38,8 +38,8 @@
         android:layout_marginBottom="150dp"
         android:contentDescription="@string/bilde"
         app:layout_constraintBottom_toTopOf="@+id/buttonVelgBilde"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNavn"
-        app:layout_constraintStart_toStartOf="@+id/editTextNavn"
+        app:layout_constraintEnd_toEndOf="@+id/editTextName"
+        app:layout_constraintStart_toStartOf="@+id/editTextName"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 

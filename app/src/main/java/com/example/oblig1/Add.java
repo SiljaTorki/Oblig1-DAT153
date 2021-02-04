@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.domain.CatList;
+import com.example.oblig1.helpers.AddHelp;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,54 +27,50 @@ public class Add extends AppCompatActivity {
     private ImageView iv;
     private String name;
     private Bitmap image;
+    private AddHelp ah = new AddHelp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageView4);
+        EditText editText = (EditText)findViewById(R.id.editTextName);
 
-        catList = CatList.getCatList(); // Get the full list from data structure
+        // Get the full list from data structure
+        catList = CatList.getCatList();
 
+        //The buttons for choosing and adding an image is created
+        Button btnChoose = (Button)findViewById(R.id.buttonVelgBilde);
+        Button btnAdd = (Button)findViewById(R.id.buttonAdd);
 
-        Button btn = (Button)findViewById(R.id.buttonVelgBilde);       //The button is created´"Velg bilde"
-        //The action is created
-        btn.setOnClickListener((View v) -> {                         //Make it possible for the user to add an image
+        /*
+        *The choose-action is created, by using lambda expression
+        * This methods makes it possible for the user to find and add an image
+        */
+        btnChoose.setOnClickListener((View v) -> {
            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
            intent.setType("image/*");
            startActivityForResult(intent, PICK_IMAGE_REQUEST);
        });
 
-        Button btn2 = (Button)findViewById(R.id.buttonAdd);       //The button is created´"Legg til"
 
-        //The action is created
-        btn2.setOnClickListener((View v) -> {
 
-            EditText editText = (EditText)findViewById(R.id.editTextNavn);
+        //The add-action is created
+        btnAdd.setOnClickListener((View v) -> {
+
             name = editText.getText().toString();
 
-            String text;
-            boolean lagtTil = false;
+            //Creates an response to the user, by using responseUser() from AddHelp.java
+            String response = ah.responseUser(name,image);
 
-            if(!name.equals("") && image != null) {          //Checking that name and image have values
-                CatList.addCat(name, image);                //Adding image and name of cat to the arrayList
-                lagtTil = true;
-                text = "Bilde er lagt til!";                //Toast-text if image is added
-
-            }else{
-                text = "Legg til text eller bilde";          //Toast-text if name or image is missing
-            }
             Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;                      //Says how long the Toast should last
-            Toast toast = Toast.makeText(context, text, duration);  //creating the Toast
+            int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
+            Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
 
             toast.show();
 
-            if(lagtTil){                           //If image is not added
-                editText.getText().clear();        //empty the editText
-                iv.setImageResource(0);            //remove image
-            }
         });
     }
 
