@@ -18,7 +18,6 @@ import com.example.oblig1.domain.Cat;
 import com.example.oblig1.domain.CatList;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Add extends AppCompatActivity {
@@ -47,6 +46,7 @@ public class Add extends AppCompatActivity {
        });
 
         Button btn2 = (Button)findViewById(R.id.buttonAdd);       //The button is created´"Legg til"
+
         //The action is created
         btn2.setOnClickListener((View v) -> {
 
@@ -70,9 +70,9 @@ public class Add extends AppCompatActivity {
 
             toast.show();
 
-            if(lagtTil){                                                  //If image is not added
-                editText.getText().clear();                              //empty the editText
-                iv.setImageResource(0);                                   //remove image
+            if(lagtTil){                           //If image is not added
+                editText.getText().clear();        //empty the editText
+                iv.setImageResource(0);            //remove image
             }
         });
     }

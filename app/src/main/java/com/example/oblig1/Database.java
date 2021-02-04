@@ -39,40 +39,41 @@ public class Database extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        //Send the list with the button
-        Button btn1 = (Button)findViewById(R.id.buttonToAdd);       //The first button is created´"Legg til"
-        //The first buttons action is created
-        btn1.setOnClickListener((View v) -> {
+        //The remove- and add-button are created
+        Button btnAdd = (Button)findViewById(R.id.buttonToAdd);
+        Button btnRemove = (Button)findViewById(R.id.buttonToRemove);
+
+
+        //The add-button is created with lambda expression
+        btnAdd.setOnClickListener((View v) -> {
             //this should send the user to the add-activity
             Intent intent = new Intent(Database.this, Add.class);
             startActivity(intent);
         });
 
-        //Delete the selected cats
-        Button btn2 = (Button)findViewById(R.id.buttonToRemove);       //The button is created´"Fjern"
-        btn2.setOnClickListener(new View.OnClickListener() {           //The button´s action is created
-            public void onClick(View v) {
-                CheckBox selectCat;
-                selectCat = (CheckBox) findViewById(R.id.checkBox1);
 
-                // Remove the Cat from the database list
-                int count = listView.getCount();  //number of my ListView items
-                int deleted = 0;
-                for (int i = 0; i < count; i++) {
-                    if(adapter.getCheckBoxStates()[i]) {
-                        cats.remove(cats.get(i-deleted));
-                        deleted++;
-                    }
+        //The remove action is created with lambda expression
+        btnRemove.setOnClickListener((View v) -> {
+            CheckBox selectCat;
+            selectCat = (CheckBox) findViewById(R.id.checkBox1);
+
+            // Remove the Cat from the database list
+            int count = listView.getCount();  //number of my ListView items
+            int deleted = 0;
+            for (int i = 0; i < count; i++) {
+                if(adapter.getCheckBoxStates()[i]) {
+                    cats.remove(cats.get(i-deleted));
+                    deleted++;
                 }
-
-
-                CustomAdapter adapter2 = new CustomAdapter(cats, Database.this);
-                adapter2.getCheckBoxStates();
-                //Update the view
-                listView.setAdapter(adapter2);
-                Intent intent = new Intent(Database.this, Database.class);
-                startActivity(intent);
             }
+
+
+            CustomAdapter adapter2 = new CustomAdapter(cats, Database.this);
+            adapter2.getCheckBoxStates();
+            //Update the view
+            listView.setAdapter(adapter2);
+            Intent intent = new Intent(Database.this, Database.class);
+            startActivity(intent);
         });
     }
 
