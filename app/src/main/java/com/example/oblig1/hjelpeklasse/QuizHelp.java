@@ -31,10 +31,12 @@ public class QuizHelp {
     //Creates a random list of cats
     //method is called in btnNext onClickListener
     public List<Cat> randomList(){
-        original = CatList.getCatList();      // Get the full list from data structure
-        int max = original.size();
+        // Get the full list from data structure
+        original = CatList.getCatList();
 
+        int max = original.size();
         int tall;
+
         cats = new ArrayList<Cat>(original.size());
         //Loop that generates a random list
         for(int j = 0; j < original.size(); j++) {
