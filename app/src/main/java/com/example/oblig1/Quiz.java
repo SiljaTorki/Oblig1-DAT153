@@ -18,11 +18,10 @@ import java.util.List;
 
 public class Quiz extends AppCompatActivity {
 
-    private List<Cat> cats;
-    private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
     TextView score;
     TextView count;
-
+    private List<Cat> cats;
+    private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
     private int counter = 1;
     private int i = 0; // Position in the list
 
@@ -31,9 +30,18 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //Finding the user´s input
         EditText editText = (EditText) findViewById(R.id.editText1);
 
-        cats = quizh.randomList();          //Creates a randomlist with the cat images
+        //Getting the image
+        ImageView image = (ImageView) findViewById(R.id.imageView);
+
+        //Finding the "Sjekk svar" and "Neste" button i the view
+        Button btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
+        Button btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
+
+        //Creates a randomlist with the cat images
+        cats = quizh.randomList();
         int max = cats.size();
 
         // Tracking question
@@ -43,49 +51,58 @@ public class Quiz extends AppCompatActivity {
 
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
-        String quizScore = "Din score: " +quizh.getCorrect();
+        String quizScore = "Din score: " + quizh.getCorrect();
         score.setText(quizScore);
 
-        ImageView image = (ImageView) findViewById(R.id.imageView);
-
+        // Gets the first image from the list
         if(max > 0)
-            image.setImageBitmap(cats.get(i).getBilde());       // Gets the first image from the list
+            image.setImageBitmap(cats.get(i).getBilde());
 
 
-        Button btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button is created´"Sjekk svar"
-
-        //Edited to use a lambda expression
+        //Checking the answer of the user´s input, by using a lambda expression
         btnCheckAnswer.setOnClickListener((View v) -> {
+
+           //A response to the user, correct/wrong answer
             CharSequence response = null;
 
+            //if not empty, gets the text from editText field
+            //and checking the user´s answer
             if(editText != null) {
-                String answer = editText.getText().toString();                  //gets the text from editText field
-                response = quizh.checkAnswer(answer, cats.get(i).getNavn());    // checking the user´s answer to
+                String answer = editText.getText().toString();
+                response = quizh.checkAnswer(answer, cats.get(i).getNavn());
             }
 
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
-                String quizScore1 = "Din score: " + quizh.getCorrect();       //Updating the score by calling getCorrect() from QuizHelper
+
+                //Updating the score by calling getCorrect() from QuizHelper
+                String quizScore1 = "Din score: " + quizh.getCorrect();
                 score.setText(quizScore1);
+
+                //Showing the toast
                 Toast toast = Toast.makeText(context, response, duration);
                 toast.show();
 
         });
 
 
-        Button btnNext = (Button)findViewById(R.id.buttonNeste);    //The button is created "Neste"
-        //Edited to use lambda expression
+        //The click-method goes to the next image, by using lambda expression
         btnNext.setOnClickListener((View v) -> {
 
-            if (i < cats.size()-1) {         //Jumps to the next image but stops at the last one
+            //Jumps to the next image but stops at the last one
+            if (i < cats.size()-1) {
                 i++;
                 counter++;
-                String quizCount1 = counter + "/" + max;     //Updates the counter
+
+                //Updates the counter
+                String quizCount1 = counter + "/" + max;
                 count.setText(quizCount1);
 
-                image.setImageBitmap(cats.get(i).getBilde());       //Finds a new image
+                //Finding the new image
+                image.setImageBitmap(cats.get(i).getBilde());
 
-                editText.getText().clear();          //Empty the editText field
+                //Empty the editText field
+                editText.getText().clear();
             }
         });
     }
