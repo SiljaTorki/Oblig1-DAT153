@@ -14,7 +14,7 @@ public class QuizHelp {
     private List<Cat> cats;
     private int correct = 0;
 
-    //Returns a response to user´s quess
+    //Returns a response to user´s guess
     //Method is called in btnCheckAnswer in Quiz.java
     public CharSequence checkAnswer(String answer, String name){
         CharSequence response;
