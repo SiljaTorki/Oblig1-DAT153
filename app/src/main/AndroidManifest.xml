@@ -10,10 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Oblig1">
+        android:theme="@style/Theme.Oblig1"
+        >
         <activity android:name=".Quiz"></activity>
         <activity android:name=".Add" />
-        <activity android:name=".Database" />
+        <activity android:name=".Database"
+            android:parentActivityName="com.example.oblig1.MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
