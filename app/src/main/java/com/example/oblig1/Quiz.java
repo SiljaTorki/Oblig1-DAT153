@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.hjelpeklasse.*;
+import com.example.oblig1.helpers.*;
 
 import java.util.List;
 

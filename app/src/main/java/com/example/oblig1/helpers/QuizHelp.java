@@ -1,6 +1,4 @@
-package com.example.oblig1.hjelpeklasse;
-
-import android.widget.EditText;
+package com.example.oblig1.helpers;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.domain.CatList;
