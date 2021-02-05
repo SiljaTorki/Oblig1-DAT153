@@ -1,6 +1,8 @@
 package com.example.oblig1;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,29 +23,49 @@ public class Quiz extends AppCompatActivity {
 
     TextView score;
     TextView count;
+
     private List<Cat> cats;
     private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
+
     private int counter = 1;
     private int i = 0; // Position in the list
+    private int max;
+
+    private boolean empty = false;
+
+    private Button btnCheckAnswer;
+    private Button btnNext;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        // my_toolbar is defined in the layout file
+        Toolbar myChildToolbar =
+                (Toolbar) findViewById(R.id.my_toolbar2);
+        setSupportActionBar(myChildToolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+
         //Finding the user´s input
         EditText editText = (EditText) findViewById(R.id.editText1);
 
         //Getting the image
-        ImageView image = (ImageView) findViewById(R.id.imageView);
+        image = (ImageView) findViewById(R.id.imageView);
 
         //Finding the "Sjekk svar" and "Neste" button i the view
-        Button btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
-        Button btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
+        btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
+        btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
 
         //Creates a randomlist with the cat images
         cats = quizh.randomList();
-        int max = cats.size();
+        max = cats.size();
 
         // Tracking question
         count = findViewById(R.id.quizCounter);
@@ -52,7 +74,7 @@ public class Quiz extends AppCompatActivity {
 
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
-        String quizScore = "Din score: " + quizh.getCorrect();
+        String quizScore = "Your score: " + quizh.getCorrect();
         score.setText(quizScore);
 
         //Used for the toasts
@@ -61,7 +83,12 @@ public class Quiz extends AppCompatActivity {
         String noImage = "No quiz available!";
 
 
-        // Gets the first image from the list
+        showOrHide();
+        if(empty) {
+            Toast toast = Toast.makeText(context, noImage, duration);
+            toast.show();
+        }
+        /* Gets the first image from the list
         if(max > 0)
             image.setImageBitmap(cats.get(i).getBilde());
         else {
@@ -76,6 +103,7 @@ public class Quiz extends AppCompatActivity {
             toast.show();
 
         }
+        */
 
         //Checking the answer of the user´s input, by using a lambda expression
         btnCheckAnswer.setOnClickListener((View v) -> {
@@ -83,8 +111,10 @@ public class Quiz extends AppCompatActivity {
            //A response to the user, correct/wrong answer
             CharSequence response = null;
 
-            //if not empty, gets the text from editText field
-            //and checking the user´s answer
+            /*
+            * if not empty, gets the text from editText field
+            * and checking the user´s answer
+            */
             if(editText != null) {
                 String answer = editText.getText().toString();
                 response = quizh.checkAnswer(answer, cats.get(i).getNavn());
@@ -120,5 +150,21 @@ public class Quiz extends AppCompatActivity {
                 editText.getText().clear();
             }
         });
+    }
+
+    public void showOrHide(){
+        // Gets the first image from the list
+        if(max > 0)
+            image.setImageBitmap(cats.get(i).getBilde());
+        else {
+            //Removing all the visible elements on the screen if there are no images available
+            btnCheckAnswer.setVisibility(View.GONE);
+            btnNext.setVisibility(View.GONE);
+            image.setVisibility(View.GONE);
+            count.setVisibility(View.GONE);
+            score.setVisibility(View.GONE);
+            empty = true;
+
+        }
     }
 }
