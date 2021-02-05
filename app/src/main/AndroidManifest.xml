@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Oblig1"
         >
-        <activity android:name=".Quiz"></activity>
-        <activity android:name=".Add" />
+        <activity android:name=".Quiz"
+            android:parentActivityName="com.example.oblig1.MainActivity"></activity>
+        <activity android:name=".Add"
+            android:parentActivityName="com.example.oblig1.MainActivity"/>
         <activity android:name=".Database"
             android:parentActivityName="com.example.oblig1.MainActivity"/>
         <activity android:name=".MainActivity">
