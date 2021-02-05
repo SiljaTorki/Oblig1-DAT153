@@ -12,22 +12,25 @@ public class QuizHelp {
     private List<Cat> cats;
     private int correct = 0;
 
-    //Returns a response to user´s guess
-    //Method is called in btnCheckAnswer in Quiz.java
+    /*
+    * Returns a response/answer to user´s guess, used in a toast
+    * Method is called in btnCheckAnswer in Quiz.java
+    */
     public CharSequence checkAnswer(String answer, String name){
         CharSequence response;
-        if(answer.equals(name)){          //check if editText equals the text connected with the photo
-            response = "Rett svar!";      //if it is correct, then a toast saying its correct
+        if(answer.equals(name)){
+            response = "Correct answer!";      //if correct guess
             correct++;
         }else{
-            response = "Feil svar!";      //if incorrect, the toast should say it is wrong
+            response = "Wrong answer!";        //else wrong guess
         }
         return response;
 
     }
-
-    //Creates a random list of cats
-    //method is called in btnNext onClickListener
+    /*
+    * Creates a random list of cats
+    * method is called in btnNext onClickListener
+    */
     public List<Cat> randomList(){
         // Get the full list from data structure
         original = CatList.getCatList();
@@ -47,9 +50,10 @@ public class QuizHelp {
         return cats;
 
     }
-
-    //To get the number of correct answers
-    //Method is called in btnCheckAnswer
+    /*
+    * To get the number of correct answers
+    * Method is called in btnCheckAnswer
+    */
     public int getCorrect(){
         return correct;
     }
