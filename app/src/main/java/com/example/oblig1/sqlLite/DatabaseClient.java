@@ -3,7 +3,7 @@ package com.example.oblig1.sqlLite;
 import android.content.Context;
 
 import androidx.room.Room;
-/*
+
 public class DatabaseClient {
 
     private Context mCtx;
@@ -30,4 +30,3 @@ public class DatabaseClient {
 
 
 }
-*/

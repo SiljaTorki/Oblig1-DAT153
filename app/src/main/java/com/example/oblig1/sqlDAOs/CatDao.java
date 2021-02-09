@@ -9,7 +9,7 @@ import androidx.room.Update;
 import com.example.oblig1.domain.Cat;
 
 import java.util.List;
-/*
+
 @Dao
 public interface CatDao {
     @Query("SELECT * FROM cat")
@@ -20,11 +20,13 @@ public interface CatDao {
 
     @Delete
     void delete(Cat cat);
+
+
 /*
 * Not in use
 *
     @Update
     void update(Cat cat);
-
-}
 */
+}
+

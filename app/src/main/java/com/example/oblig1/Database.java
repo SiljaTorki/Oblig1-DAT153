@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.domain.CatList;
+//import com.example.oblig1.domain.CatList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,8 @@ public class Database extends AppCompatActivity {
         listView = findViewById(R.id.listView);
 
         // gats all the cats in a list
-        cats = CatList.getCatList();
+       // cats = CatList.getCatList();
+        //TODO: Må hente kattelisten fra databasen
 
         // Creates array adapter
         CustomAdapter adapter = new CustomAdapter(cats,Database.this);
