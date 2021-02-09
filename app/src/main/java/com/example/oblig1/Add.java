@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.domain.CatList;
+//import com.example.oblig1.domain.CatList;
 import com.example.oblig1.helpers.AddHelp;
 
 import java.io.IOException;
@@ -53,7 +53,8 @@ public class Add extends AppCompatActivity {
         EditText editText = (EditText)findViewById(R.id.editTextName);
 
         // Get the full list from data structure
-        catList = CatList.getCatList();
+       // catList = CatList.getCatList();
+        //TODO: Må hente listen fra databasen
 
         //The buttons for choosing and adding an image is created
         Button btnChoose = (Button)findViewById(R.id.buttonVelgBilde);

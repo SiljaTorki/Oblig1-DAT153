@@ -2,7 +2,7 @@ package com.example.oblig1.helpers;
 
 import android.graphics.Bitmap;
 
-import com.example.oblig1.domain.CatList;
+//import com.example.oblig1.domain.CatList;
 
 public class AddHelp {
 
@@ -10,7 +10,8 @@ public class AddHelp {
        String response;
        //Method for adding the new cat-image
         if(!name.equals("") && image != null) {
-            CatList.addCat(name, image);
+            //CatList.addCat(name, image);
+            //TODO: Må  legge inn katten i databasen!!
             response = "Image is added!";                //Toast-text if image is added
         }else{
             response = "Please add text and/or image";   //Toast-text if name or image is missing
