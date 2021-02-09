@@ -6,7 +6,7 @@ import com.example.oblig1.domain.Cat;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 public class CatList {
 
     private static List<Cat> catList;
@@ -24,4 +24,5 @@ public class CatList {
         return catList;
     }
 
-}
+}*/
+
