@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oblig1.domain.Cat;
+import com.example.oblig1.helpers.BitMapHelp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,8 +84,8 @@ public class CustomAdapter extends ArrayAdapter<Cat> {
         }
 
         //Set the data to be displayed
-        viewHolder.tv.setText(cat.getNavn());
-        viewHolder.img.setImageBitmap(cat.getBilde());
+        viewHolder.tv.setText(cat.getName());
+        viewHolder.img.setImageBitmap(BitMapHelp.getImage(cat.getByteImage()));
         viewHolder.cb.setChecked(checkBoxState[position]);
 
 
