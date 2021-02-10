@@ -1,7 +1,8 @@
 package com.example.oblig1.helpers;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.domain.CatList;
+import com.example.oblig1.sqlDAOs.CatDao;
+//import com.example.oblig1.domain.CatList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,8 @@ public class QuizHelp {
     private List<Cat> original;
     private List<Cat> cats;
     private int correct = 0;
+
+    private CatDao catDao;
 
     /*
     * Returns a response/answer to user´s guess, used in a toast
@@ -31,11 +34,9 @@ public class QuizHelp {
     * Creates a random list of cats
     * method is called in btnNext onClickListener
     */
-    public List<Cat> randomList(){
+    public List<Cat> randomList(List<Cat> original) {
         // Get the full list from data structure
-        original = CatList.getCatList();
-
-        int max = original.size();
+        //original = CatList.getCatList();
         int tall;
 
         cats = new ArrayList<Cat>(original.size());

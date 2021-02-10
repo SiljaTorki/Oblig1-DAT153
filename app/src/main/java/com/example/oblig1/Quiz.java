@@ -3,10 +3,10 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
+import com.example.oblig1.sqlLite.AppDatabase;
 
 import java.util.List;
+
+import static com.example.oblig1.MainActivity.DATABASE;
 
 public class Quiz extends AppCompatActivity {
 
@@ -42,6 +45,12 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        AppDatabase catDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                DATABASE).build();
+
+
         // my_toolbar is defined in the layout file
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.my_toolbar2);
@@ -64,8 +73,15 @@ public class Quiz extends AppCompatActivity {
         btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
 
         //Creates a randomlist with the cat images
-        cats = quizh.randomList();
-        max = cats.size();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                cats = quizh.randomList(catDatabase.catDao().getAll());
+                max = cats.size();
+
+
+      //  cats = quizh.randomList(original);
+      //  max = cats.size();
 
         // Tracking question
         count = findViewById(R.id.quizCounter);
@@ -117,7 +133,7 @@ public class Quiz extends AppCompatActivity {
             */
             if(editText != null) {
                 String answer = editText.getText().toString();
-                response = quizh.checkAnswer(answer, cats.get(i).getNavn());
+                response = quizh.checkAnswer(answer, cats.get(i).getName());
             }
 
                 //Updating the score by calling getCorrect() from QuizHelper
@@ -144,19 +160,22 @@ public class Quiz extends AppCompatActivity {
                 count.setText(quizCount1);
 
                 //Finding the new image
-                image.setImageBitmap(cats.get(i).getBilde());
+                image.setImageBitmap(BitMapHelp.getImage(cats.get(i).getByteImage()));
+
 
                 //Empty the editText field
                 editText.getText().clear();
             }
         });
+            }});
     }
 
     public void showOrHide(){
         // Gets the first image from the list
         if(max > 0)
-            image.setImageBitmap(cats.get(i).getBilde());
-        else {
+            image.setImageBitmap(BitMapHelp.getImage(cats.get(i).getByteImage()));
+
+       else {
             //Removing all the visible elements on the screen if there are no images available
             btnCheckAnswer.setVisibility(View.GONE);
             btnNext.setVisibility(View.GONE);
@@ -165,6 +184,7 @@ public class Quiz extends AppCompatActivity {
             score.setVisibility(View.GONE);
             empty = true;
 
-        }
+       }
     }
+
 }
