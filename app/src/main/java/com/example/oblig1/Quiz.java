@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -79,41 +80,42 @@ public class Quiz extends AppCompatActivity {
             public void run() {
                 try {
                     cats = quizh.randomList(catDatabase.catDao().getAll());
-                    max = cats.size();
-                    //System.out.println("HER ER MAX VERDIEN FOR LISTEN:" + max + " HER ER DENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+
                 }finally{
                     catDatabase.close();
                 }
             }}).start();
 
       //  cats = quizh.randomList(original);
-//        max = cats.size();
+     //   max = cats.size();
 
-
+        max = cats.size();
+        System.out.println("HER ER MAX VERDIEN FOR LISTEN:" + max + " HER ER DENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
         // Tracking question
         count = findViewById(R.id.quizCounter);
         String quizCount = counter + "/" + max;
-        count.setText(quizCount);
+
 
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
         String quizScore = "Your score: " + quizh.getCorrect();
-        score.setText(quizScore);
 
         //Used for the toasts
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
         String noImage = "No quiz available!";
 
+        count.setText(quizCount);
+        score.setText(quizScore);
 
         showOrHide();
-        if(empty) {
+        /*if(empty) {
             Toast toast = Toast.makeText(context, noImage, duration);
             toast.show();
         }
-        /* Gets the first image from the list
+        // Gets the first image from the list
         if(max > 0)
-            image.setImageBitmap(cats.get(i).getBilde());
+            image.setImageURI(Uri.parse(cats.get(i).getImage()));
         else {
             //Removing all the visible elements on the screen if there are no images available
             btnCheckAnswer.setVisibility(View.GONE);
@@ -125,8 +127,8 @@ public class Quiz extends AppCompatActivity {
             Toast toast = Toast.makeText(context, noImage, duration);
             toast.show();
 
-        }
-        */
+        }*/
+
 
         //Checking the answer of the user´s input, by using a lambda expression
         btnCheckAnswer.setOnClickListener((View v) -> {
@@ -167,7 +169,7 @@ public class Quiz extends AppCompatActivity {
                 count.setText(quizCount1);
 
                 //Finding the new image
-                image.setImageBitmap(BitMapHelp.getImage(cats.get(i).getByteImage()));
+                image.setImageURI(Uri.parse(cats.get(i).getImage()));
 
 
                 //Empty the editText field
@@ -180,7 +182,8 @@ public class Quiz extends AppCompatActivity {
     public void showOrHide(){
         // Gets the first image from the list
         if(max > 0)
-            image.setImageBitmap(BitMapHelp.getImage(cats.get(i).getByteImage()));
+
+            image.setImageURI(Uri.parse(cats.get(i).getImage()));
 
        else {
             //Removing all the visible elements on the screen if there are no images available

@@ -1,6 +1,7 @@
 package com.example.oblig1;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +86,7 @@ public class CustomAdapter extends ArrayAdapter<Cat> {
 
         //Set the data to be displayed
         viewHolder.tv.setText(cat.getName());
-        viewHolder.img.setImageBitmap(BitMapHelp.getImage(cat.getByteImage()));
+        viewHolder.img.setImageURI(Uri.parse(cat.getImage()));
         viewHolder.cb.setChecked(checkBoxState[position]);
 
 
