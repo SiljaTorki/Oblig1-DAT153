@@ -13,6 +13,8 @@ import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.BitMapHelp;
 import com.example.oblig1.sqlLite.AppDatabase;
 
+import java.util.List;
+
 //import com.example.oblig1.domain.CatList;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,20 +34,32 @@ public class MainActivity extends AppCompatActivity {
         AppDatabase catDatabase = Room.databaseBuilder(
                 getApplicationContext(),
                 AppDatabase.class,
-                DATABASE).build();// TODO: Export this string to a constant
+                DATABASE).build();
+
 
 
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    if(catDatabase.catDao().getAll() == null) {
-                        Cat cat1 = new Cat("Cat one", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_one)));
-                        Cat cat2 = new Cat("Cat two", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_two)));
-                        Cat cat3 = new Cat("Cat three", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_three3)));
 
-                        catDatabase.catDao().insert(cat1);
-                        catDatabase.catDao().insert(cat2);
-                        catDatabase.catDao().insert(cat3);
+                    try {
+                        List<Cat> kittens = catDatabase.catDao().getAll();
+                        if(kittens == null) {
+                            Cat cat1 = new Cat("Cat one", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_one)));
+                            Cat cat2 = new Cat("Cat two", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_two)));
+                            Cat cat3 = new Cat("Cat three", BitMapHelp.getBytes(BitmapFactory.decodeResource(getResources(), R.drawable.cat_three3)));
+
+
+                            catDatabase.catDao().insert(cat1);
+                            catDatabase.catDao().insert(cat2);
+                            catDatabase.catDao().insert(cat3);
+                        }
+                            //List<Cat> kittens = catDatabase.catDao().getAll();
+                        System.out.println("HER ER KATTEN DU VENTET PÅ:" + kittens.get(0).getName() + " KAAAAAAAATTTTTTEN");
+
+                    } finally {
+                        catDatabase.close();
+
                     }
                 }
             }).start();

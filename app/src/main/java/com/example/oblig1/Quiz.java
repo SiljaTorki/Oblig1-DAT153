@@ -72,16 +72,23 @@ public class Quiz extends AppCompatActivity {
         btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
         btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
 
+
         //Creates a randomlist with the cat images
         new Thread(new Runnable() {
             @Override
             public void run() {
-                cats = quizh.randomList(catDatabase.catDao().getAll());
-                max = cats.size();
-
+                try {
+                    cats = quizh.randomList(catDatabase.catDao().getAll());
+                    max = cats.size();
+                    //System.out.println("HER ER MAX VERDIEN FOR LISTEN:" + max + " HER ER DENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+                }finally{
+                    catDatabase.close();
+                }
+            }}).start();
 
       //  cats = quizh.randomList(original);
-      //  max = cats.size();
+//        max = cats.size();
+
 
         // Tracking question
         count = findViewById(R.id.quizCounter);
@@ -167,7 +174,7 @@ public class Quiz extends AppCompatActivity {
                 editText.getText().clear();
             }
         });
-            }});
+
     }
 
     public void showOrHide(){
