@@ -24,7 +24,8 @@ import static com.example.oblig1.MainActivity.DATABASE;
 public class Database extends AppCompatActivity {
 
     ListView listView;
-    private List<Cat> cats;  // A list to store the cats photos in
+    private List<Cat> cats;  // A list to store the cat-photos in
+    private int deleted = 0;
 
 
     @Override
@@ -32,6 +33,8 @@ public class Database extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
 
+
+        //Creates acces to the database
         AppDatabase catDatabase = Room.databaseBuilder(
                 getApplicationContext(),
                 AppDatabase.class,
@@ -68,9 +71,6 @@ public class Database extends AppCompatActivity {
         //Create the view dynamic
         listView = findViewById(R.id.listView);
 
-        // gats all the cats in a list
-       // cats = CatList.getCatList();
-
         // Creates array adapter
         CustomAdapter adapter = new CustomAdapter(cats,Database.this);
 
@@ -97,22 +97,48 @@ public class Database extends AppCompatActivity {
             selectCat = (CheckBox) findViewById(R.id.checkBox1);
 
             // Remove the Cat from the database list
-            int count = listView.getCount();  //number of my ListView items
-            int deleted = 0;
-            for (int i = 0; i < count; i++) {
-                if(adapter.getCheckBoxStates()[i]) {
-                    cats.remove(cats.get(i-deleted));
-                    deleted++;
+            int count = listView.getCount();  //number of ListView items
+
+            /*
+            * This new thread is deleting the images
+            * from the view and the database
+            */
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                    for (
+                            int i = 0;
+                            i < count; i++) {
+                        if (adapter.getCheckBoxStates()[i]) {
+                            Cat cat = cats.get(i - deleted);
+                            catDatabase.catDao().delete(cat);
+                            cats.remove(cats.get(i - deleted));
+                            deleted++;
+                        }
+                    }
+                }finally{
+                        catDatabase.close();
+                    }
                 }
+            }).start();
+
+            /*
+            *Forcing the UI thread to sleep
+            * the new Thread will get time to update
+            * the database before the UI do anything else
+            */
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
 
-            CustomAdapter adapter2 = new CustomAdapter(cats, Database.this);
-            adapter2.getCheckBoxStates();
+            adapter.getCheckBoxStates();
             //Update the view
-            listView.setAdapter(adapter2);
-            Intent intent = new Intent(Database.this, Database.class);
-            startActivity(intent);
+            listView.setAdapter(adapter);
+
         });
     }
 
