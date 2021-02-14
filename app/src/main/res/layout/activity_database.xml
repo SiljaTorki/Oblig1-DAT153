@@ -33,19 +33,22 @@
             <Button
                 android:id="@+id/buttonToAdd"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginBottom="10dp"
+                android:text="@string/legg_til"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/legg_til"
                 tools:ignore="MissingConstraints" />
+
             <Button
                 android:id="@+id/buttonToRemove"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/fjern"
+                android:textSize="24sp"
                 android:theme="@style/Button.Red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
