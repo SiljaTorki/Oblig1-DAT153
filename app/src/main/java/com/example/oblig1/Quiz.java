@@ -86,11 +86,13 @@ public class Quiz extends AppCompatActivity {
                 }
             }}).start();
 
-      //  cats = quizh.randomList(original);
-     //   max = cats.size();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         max = cats.size();
-        System.out.println("HER ER MAX VERDIEN FOR LISTEN:" + max + " HER ER DENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
         // Tracking question
         count = findViewById(R.id.quizCounter);
         String quizCount = counter + "/" + max;
