@@ -3,6 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +13,13 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.oblig1.domain.Cat;
+import com.example.oblig1.sqlLite.AppDatabase;
 //import com.example.oblig1.domain.CatList;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.oblig1.MainActivity.DATABASE;
 
 public class Database extends AppCompatActivity {
 
@@ -27,6 +31,28 @@ public class Database extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
+
+        AppDatabase catDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                DATABASE).build();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    cats = catDatabase.catDao().getAll();
+
+                }finally{
+                    catDatabase.close();
+                }
+            }}).start();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // my_toolbar is defined in the layout file
         Toolbar myChildToolbar =
@@ -44,7 +70,6 @@ public class Database extends AppCompatActivity {
 
         // gats all the cats in a list
        // cats = CatList.getCatList();
-        //TODO: Må hente kattelisten fra databasen
 
         // Creates array adapter
         CustomAdapter adapter = new CustomAdapter(cats,Database.this);
