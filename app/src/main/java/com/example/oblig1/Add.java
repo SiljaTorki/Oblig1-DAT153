@@ -3,7 +3,9 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,9 +21,12 @@ import android.widget.Toast;
 import com.example.oblig1.domain.Cat;
 //import com.example.oblig1.domain.CatList;
 import com.example.oblig1.helpers.AddHelp;
+import com.example.oblig1.sqlLite.AppDatabase;
 
 import java.io.IOException;
 import java.util.List;
+
+import static com.example.oblig1.MainActivity.DATABASE;
 
 public class Add extends AppCompatActivity {
     private List<Cat> catList;  // A list to store the cats photos in
@@ -30,6 +35,7 @@ public class Add extends AppCompatActivity {
     private String name;
     private Bitmap image;
     private AddHelp ah = new AddHelp();
+    private Uri selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +53,14 @@ public class Add extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
+        AppDatabase catDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                DATABASE).build();
 
         //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageView4);
         EditText editText = (EditText)findViewById(R.id.editTextName);
-
-        // Get the full list from data structure
-       // catList = CatList.getCatList();
-        //TODO: Må hente listen fra databasen
 
         //The buttons for choosing and adding an image is created
         Button btnChoose = (Button)findViewById(R.id.buttonVelgBilde);
@@ -65,17 +71,32 @@ public class Add extends AppCompatActivity {
         * This methods makes it possible for the user to find and add an image
         */
         btnChoose.setOnClickListener((View v) -> {
-           Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+           Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
            intent.setType("image/*");
            startActivityForResult(intent, PICK_IMAGE_REQUEST);
        });
-
-
 
         //The add-action is created
         btnAdd.setOnClickListener((View v) -> {
 
             name = editText.getText().toString();
+            Cat cat = new Cat(name, selectedImage.toString());
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        catDatabase.catDao().insert(cat);
+
+                    }finally{
+                        catDatabase.close();
+                    }
+                }}).start();
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             //Creates an response to the user, by using responseUser() from AddHelp.java
             String response = ah.responseUser(name,image);
@@ -85,7 +106,6 @@ public class Add extends AppCompatActivity {
             Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
 
             toast.show();
-
         });
     }
 
@@ -95,7 +115,7 @@ public class Add extends AppCompatActivity {
         switch (requestCode) {
             case PICK_IMAGE_REQUEST:
                 if (resultCode == RESULT_OK) {
-                    Uri selectedImage = data.getData();
+                    selectedImage = data.getData();
 
                     // method 1
                     try {
@@ -105,6 +125,7 @@ public class Add extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    getContentResolver().takePersistableUriPermission(selectedImage, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 }
                 break;
         }}
