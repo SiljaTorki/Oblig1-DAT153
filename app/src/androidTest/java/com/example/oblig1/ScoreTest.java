@@ -39,7 +39,7 @@ public class ScoreTest {
             * otherwise it should not be updated
             * only the first image is tested
              */
-            if(onView(withId(R.id.imageView)).equals("Cat one")){
+            if(onView(withId(R.id.imageView)).equals("android.resource://com.example.oblig1/drawable/cat_one")){
                 assertTrue(onView(withId(R.id.quizScore)).equals("Your score: 1"));
             }else{
                 assertFalse(onView(withId(R.id.quizScore)).equals("Your score: 1"));

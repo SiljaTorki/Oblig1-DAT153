@@ -148,7 +148,7 @@ public class Quiz extends AppCompatActivity {
             }
 
                 //Updating the score by calling getCorrect() from QuizHelper
-                String quizScore1 = "Din score: " + quizh.getCorrect();
+                String quizScore1 = "Your score: " + quizh.getCorrect();
                 score.setText(quizScore1);
 
                 //Showing the toast
