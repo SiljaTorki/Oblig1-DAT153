@@ -44,9 +44,5 @@ public class ScoreTest {
             }else{
                 assertFalse(onView(withId(R.id.quizScore)).equals("Your score: 1"));
             }
-
-
-
     }
-
 }
