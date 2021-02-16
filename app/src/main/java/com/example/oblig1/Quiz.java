@@ -29,6 +29,7 @@ public class Quiz extends AppCompatActivity {
     TextView count;
 
     private List<Cat> cats;
+    private static String catName;
     private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
 
     private int counter = 1;
@@ -87,12 +88,13 @@ public class Quiz extends AppCompatActivity {
             }}).start();
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         max = cats.size();
+        catName = cats.get(0).getName();
         // Tracking question
         count = findViewById(R.id.quizCounter);
         String quizCount = counter + "/" + max;
@@ -101,6 +103,7 @@ public class Quiz extends AppCompatActivity {
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
         String quizScore = "Your score: " + quizh.getCorrect();
+        System.out.println("quizScore: " + quizScore);
 
         //Used for the toasts
         Context context = getApplicationContext();
@@ -150,6 +153,7 @@ public class Quiz extends AppCompatActivity {
                 //Updating the score by calling getCorrect() from QuizHelper
                 String quizScore1 = "Your score: " + quizh.getCorrect();
                 score.setText(quizScore1);
+                System.out.println("quizScore1: " + quizScore1);
 
                 //Showing the toast
                 Toast toast = Toast.makeText(context, response, duration);
@@ -198,5 +202,7 @@ public class Quiz extends AppCompatActivity {
 
        }
     }
-
+    public static String getCatName() {
+        return catName;
+    }
 }
