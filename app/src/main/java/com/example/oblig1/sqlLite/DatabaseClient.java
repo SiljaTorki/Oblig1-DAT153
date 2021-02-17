@@ -15,7 +15,7 @@ public class DatabaseClient {
     //Constructor which creates the appDatabase
     private DatabaseClient(Context mCtx) {
         this.mCtx = mCtx;
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "MyToDos").build();
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "catDatabase").build();
     }
     public static synchronized DatabaseClient getInstance(Context mCtx) {
         if (mInstance == null) {

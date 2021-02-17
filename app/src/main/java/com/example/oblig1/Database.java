@@ -13,19 +13,24 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.oblig1.domain.Cat;
+import com.example.oblig1.helpers.DatabaseHelper;
 import com.example.oblig1.sqlLite.AppDatabase;
+import com.example.oblig1.sqlLite.DatabaseClient;
 //import com.example.oblig1.domain.CatList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.oblig1.MainActivity.DATABASE;
+//import static com.example.oblig1.MainActivity.DATABASE;
+
 
 public class Database extends AppCompatActivity {
 
     ListView listView;
     private List<Cat> cats;  // A list to store the cat-photos in
     private int deleted = 0;
+    //private DatabaseClient clientDB;
+    private DatabaseHelper dbHelper;
 
 
     @Override
@@ -34,13 +39,14 @@ public class Database extends AppCompatActivity {
         setContentView(R.layout.activity_database);
 
 
-        //Creates acces to the database
-        AppDatabase catDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                AppDatabase.class,
-                DATABASE).build();
+        //Creates access to the database
+        dbHelper = new DatabaseHelper (getApplicationContext());
+        cats = dbHelper.getAllCats();
+        //DatabaseClient clientDB = DatabaseClient.getInstance(getApplicationContext());
+        //AppDatabase catDatabase= clientDB.getAppDatabase();
 
-        new Thread(new Runnable() {
+
+        /*new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -56,6 +62,8 @@ public class Database extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+*/
+
 
         // my_toolbar is defined in the layout file
         Toolbar myChildToolbar =
@@ -93,16 +101,19 @@ public class Database extends AppCompatActivity {
 
         //The remove action is created with lambda expression
         btnRemove.setOnClickListener((View v) -> {
-            CheckBox selectCat;
-            selectCat = (CheckBox) findViewById(R.id.checkBox1);
+            //CheckBox selectCat;
+           // selectCat = (CheckBox) findViewById(R.id.checkBox1);
 
             // Remove the Cat from the database list
             int count = listView.getCount();  //number of ListView items
 
+            dbHelper.deleteCatsDB(adapter, count,getApplicationContext());
+
+
             /*
             * This new thread is deleting the images
             * from the view and the database
-            */
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -127,15 +138,15 @@ public class Database extends AppCompatActivity {
             *Forcing the UI thread to sleep
             * the new Thread will get time to update
             * the database before the UI do anything else
-            */
+
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+*/
 
-
-            adapter.getCheckBoxStates();
+            //adapter.getCheckBoxStates();
             //Update the view
             listView.setAdapter(adapter);
 

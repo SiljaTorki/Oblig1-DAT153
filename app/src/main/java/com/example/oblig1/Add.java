@@ -22,11 +22,12 @@ import com.example.oblig1.domain.Cat;
 //import com.example.oblig1.domain.CatList;
 import com.example.oblig1.helpers.AddHelp;
 import com.example.oblig1.sqlLite.AppDatabase;
+import com.example.oblig1.sqlLite.DatabaseClient;
 
 import java.io.IOException;
 import java.util.List;
 
-import static com.example.oblig1.MainActivity.DATABASE;
+//import static com.example.oblig1.MainActivity.DATABASE;
 
 public class Add extends AppCompatActivity {
     private List<Cat> catList;  // A list to store the cats photos in
@@ -36,6 +37,7 @@ public class Add extends AppCompatActivity {
     private Bitmap image;
     private AddHelp ah = new AddHelp();
     private Uri selectedImage;
+    private DatabaseClient clientDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,8 @@ public class Add extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        AppDatabase catDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                AppDatabase.class,
-                DATABASE).build();
+        DatabaseClient clientDB = DatabaseClient.getInstance(getApplicationContext());
+        AppDatabase catDatabase= clientDB.getAppDatabase();
 
         //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageView4);

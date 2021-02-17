@@ -11,9 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.helpers.BitMapHelp;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Cat> {

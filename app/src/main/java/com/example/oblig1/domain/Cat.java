@@ -1,16 +1,9 @@
 package com.example.oblig1.domain;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import com.example.oblig1.helpers.BitMapHelp;
-
-import java.io.Serializable;
 
 @Entity(tableName = "Cat")
 public class Cat {
