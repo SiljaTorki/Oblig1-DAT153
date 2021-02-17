@@ -12,6 +12,9 @@ Database Activity - Shows all names & pictures in the quiz app, it is alsow pois
 Add Activity -  The user can add a new photo and the associated name to the quiz.
 
 
+
+
+
 Write test-cases using Espresso for your app! At least have the following test cases: 
 
 * clicking a button in the main-menu takes you to the right activity (testing one button is enough);
