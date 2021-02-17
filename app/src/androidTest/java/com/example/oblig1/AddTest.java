@@ -4,14 +4,18 @@ package com.example.oblig1;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
+import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.oblig1.domain.Cat;
 
 import org.hamcrest.Matcher;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +39,15 @@ public class AddTest {
     public ActivityScenarioRule<Add> activityRule =
             new ActivityScenarioRule<>(Add.class);
 
+    @Before
+    public void setUp() {
+        Intents.init();
+    }
+    @After
+    public void tearDown() {
+        Intents.release();
+    }
+
     @Test
     public void addButton() {
        // onView(withId(R.id.buttonVelgBilde))
@@ -42,13 +55,16 @@ public class AddTest {
 
         Intent resultData = new Intent();
         String catName = "Katy Perry";
-        String catImage = "android.resource://com.example.oblig1/drawable/cat_one";
+        Uri catImageURI = Uri.parse("android.resource://com.example.oblig1/drawable/cat_one");
+        resultData.setData(catImageURI);
+        // TODO do we need the next two lines
         resultData.putExtra("kitten", catName);
-        resultData.putExtra("image",catImage);
+        resultData.putExtra("image", catImageURI);
 
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
 
+        // intending(not(isInternal())).respondWith(result);
         intending(toPackage("com.example.oblig1")).respondWith(result);
 
 
