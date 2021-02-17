@@ -4,8 +4,11 @@ The Name Quiz app
 Activities:
 
 Main Activity - Home page where user can navigate to the other activities.
+
 Quiz Activity - The app randomly selects a photo from the database, and shows it on the                   screen. The user to enter the name of the person on the photo, and submit                 the name to the app. After submission, the app indicates if the name was                 correct or not.
+
 Database Activity - Shows all names & pictures in the quiz app, it is alsow poisble to                         delete an add a new object (cat).
+
 Add Activity -  The user can add a new photo and the associated name to the quiz.
 
 
