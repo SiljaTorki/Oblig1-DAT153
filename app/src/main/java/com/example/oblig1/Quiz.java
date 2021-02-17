@@ -18,10 +18,10 @@ import android.widget.Toast;
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
 import com.example.oblig1.sqlLite.AppDatabase;
+import com.example.oblig1.sqlLite.DatabaseClient;
 
 import java.util.List;
 
-import static com.example.oblig1.MainActivity.DATABASE;
 
 public class Quiz extends AppCompatActivity {
 
@@ -42,17 +42,17 @@ public class Quiz extends AppCompatActivity {
     private Button btnNext;
     private ImageView image;
 
+    private DatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        AppDatabase catDatabase = Room.databaseBuilder(
-                getApplicationContext(),
-                AppDatabase.class,
-                DATABASE).build();
-
-
+/*
+        DatabaseClient clientDB = DatabaseClient.getInstance(getApplicationContext());
+        AppDatabase catDatabase= clientDB.getAppDatabase();
+*/
+        dbHelper = new DatabaseHelper(getApplicationContext());
         // my_toolbar is defined in the layout file
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.my_toolbar2);
@@ -74,27 +74,12 @@ public class Quiz extends AppCompatActivity {
         btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
         btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
 
-
-        //Creates a randomlist with the cat images
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    cats = quizh.randomList(catDatabase.catDao().getAll());
-
-                }finally{
-                    catDatabase.close();
-                }
-            }}).start();
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        //Getting the list of cats from the database
+        cats = dbHelper.getAllCats();
+        cats = quizh.randomList(cats);
         max = cats.size();
         catName = cats.get(0).getName();
+
         // Tracking question
         count = findViewById(R.id.quizCounter);
         String quizCount = counter + "/" + max;
@@ -103,7 +88,6 @@ public class Quiz extends AppCompatActivity {
         //Provides a score at the top of the application
         score = findViewById(R.id.quizScore);
         String quizScore = "Your score: " + quizh.getCorrect();
-        System.out.println("quizScore: " + quizScore);
 
         //Used for the toasts
         Context context = getApplicationContext();
@@ -114,26 +98,6 @@ public class Quiz extends AppCompatActivity {
         score.setText(quizScore);
 
         showOrHide();
-        /*if(empty) {
-            Toast toast = Toast.makeText(context, noImage, duration);
-            toast.show();
-        }
-        // Gets the first image from the list
-        if(max > 0)
-            image.setImageURI(Uri.parse(cats.get(i).getImage()));
-        else {
-            //Removing all the visible elements on the screen if there are no images available
-            btnCheckAnswer.setVisibility(View.GONE);
-            btnNext.setVisibility(View.GONE);
-            image.setVisibility(View.GONE);
-            count.setVisibility(View.GONE);
-            score.setVisibility(View.GONE);
-
-            Toast toast = Toast.makeText(context, noImage, duration);
-            toast.show();
-
-        }*/
-
 
         //Checking the answer of the user´s input, by using a lambda expression
         btnCheckAnswer.setOnClickListener((View v) -> {
@@ -153,7 +117,6 @@ public class Quiz extends AppCompatActivity {
                 //Updating the score by calling getCorrect() from QuizHelper
                 String quizScore1 = "Your score: " + quizh.getCorrect();
                 score.setText(quizScore1);
-                System.out.println("quizScore1: " + quizScore1);
 
                 //Showing the toast
                 Toast toast = Toast.makeText(context, response, duration);
@@ -191,18 +154,11 @@ public class Quiz extends AppCompatActivity {
 
             image.setImageURI(Uri.parse(cats.get(i).getImage()));
 
-       else {
-            //Removing all the visible elements on the screen if there are no images available
-            btnCheckAnswer.setVisibility(View.GONE);
-            btnNext.setVisibility(View.GONE);
-            image.setVisibility(View.GONE);
-            count.setVisibility(View.GONE);
-            score.setVisibility(View.GONE);
-            empty = true;
-
-       }
     }
     public static String getCatName() {
         return catName;
     }
+
 }
+
+
