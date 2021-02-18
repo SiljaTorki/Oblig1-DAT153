@@ -36,22 +36,11 @@ public class Database extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database);
 
-
         //Creates access to the database
         dbHelper = new DatabaseHelper (getApplicationContext());
         cats = dbHelper.getAllCats();
 
-
-        // my_toolbar is defined in the layout file
-        Toolbar myChildToolbar =
-                (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myChildToolbar);
-
-        // Get a support ActionBar corresponding to this toolbar
-        ActionBar ab = getSupportActionBar();
-
-        // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
+        theToolbar();
 
         //Create the view dynamic
         listView = findViewById(R.id.listView);
@@ -88,6 +77,20 @@ public class Database extends AppCompatActivity {
             listView.setAdapter(adapter);
 
         });
+    }
+
+    //Makes it possible for the user to go back to the MainActivity.class
+    private void theToolbar(){
+        // my_toolbar is defined in the layout file
+        Toolbar myChildToolbar =
+                (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myChildToolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
     }
 
 

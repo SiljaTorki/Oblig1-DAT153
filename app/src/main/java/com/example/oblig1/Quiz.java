@@ -128,7 +128,7 @@ public class Quiz extends AppCompatActivity {
 
     //Make it possible for the user to get back to the MainActivity.class
     private void theToolbar(){
-        // my_toolbar is defined in the layout file
+        // my_toolbar_quiz is defined in the layout file
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.my_toolbar_quiz);
         setSupportActionBar(myChildToolbar);
