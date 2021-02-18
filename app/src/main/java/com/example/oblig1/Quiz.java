@@ -71,6 +71,7 @@ public class Quiz extends AppCompatActivity {
         btnCheckAnswer = (Button)findViewById(R.id.buttonCheckAnswer);
         btnNext = (Button)findViewById(R.id.buttonNext);
 
+        //Setting the first image
         image.setImageURI(Uri.parse(cats.get(i).getImage()));
 
 
