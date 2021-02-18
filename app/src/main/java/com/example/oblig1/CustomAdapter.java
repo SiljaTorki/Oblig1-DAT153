@@ -70,9 +70,9 @@ public class CustomAdapter extends ArrayAdapter<Cat> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.list_item, parent, false);
             //cache the views
-            viewHolder.tv = (TextView) convertView.findViewById(R.id.textViewName);
-            viewHolder.img = (ImageView) convertView.findViewById(R.id.imageViewCats);
-            viewHolder.cb = (CheckBox) convertView.findViewById(R.id.checkBox1);
+            viewHolder.tv = (TextView) convertView.findViewById(R.id.textViewCatNameListItem);
+            viewHolder.img = (ImageView) convertView.findViewById(R.id.imageViewCatsListItem);
+            viewHolder.cb = (CheckBox) convertView.findViewById(R.id.checkBoxListItem);
 
             result = convertView;
 
