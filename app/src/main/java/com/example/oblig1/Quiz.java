@@ -3,7 +3,6 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,8 +16,6 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
-import com.example.oblig1.sqlLite.AppDatabase;
-import com.example.oblig1.sqlLite.DatabaseClient;
 
 import java.util.List;
 
@@ -48,14 +45,11 @@ public class Quiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-/*
-        DatabaseClient clientDB = DatabaseClient.getInstance(getApplicationContext());
-        AppDatabase catDatabase= clientDB.getAppDatabase();
-*/
+
         dbHelper = new DatabaseHelper(getApplicationContext());
         // my_toolbar is defined in the layout file
         Toolbar myChildToolbar =
-                (Toolbar) findViewById(R.id.my_toolbar2);
+                (Toolbar) findViewById(R.id.my_toolbar_quiz);
         setSupportActionBar(myChildToolbar);
 
         // Get a support ActionBar corresponding to this toolbar
@@ -65,14 +59,14 @@ public class Quiz extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         //Finding the user´s input
-        EditText editText = (EditText) findViewById(R.id.editText1);
+        EditText editText = (EditText) findViewById(R.id.editTextGuess);
 
         //Getting the image
-        image = (ImageView) findViewById(R.id.imageView);
+        image = (ImageView) findViewById(R.id.imageViewQuiz);
 
         //Finding the "Sjekk svar" and "Neste" button i the view
-        btnCheckAnswer = (Button)findViewById(R.id.buttonSvar);       //The button´"Sjekk svar"
-        btnNext = (Button)findViewById(R.id.buttonNeste);            //The button "Neste"
+        btnCheckAnswer = (Button)findViewById(R.id.buttonCheckAnswer);       //The button´"Sjekk svar"
+        btnNext = (Button)findViewById(R.id.buttonNext);            //The button "Neste"
 
         //Getting the list of cats from the database
         cats = dbHelper.getAllCats();
