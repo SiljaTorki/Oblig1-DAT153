@@ -4,6 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+/**
+*   This class is used in other classes to create new Cat-elements
+*   It is also connected to the table in the database (ROOM)
+*   Make it possible to get both cat-name and -image
+ */
 
 @Entity(tableName = "Cat")
 public class Cat {
