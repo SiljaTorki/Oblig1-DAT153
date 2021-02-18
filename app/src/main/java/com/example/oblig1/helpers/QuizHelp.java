@@ -7,6 +7,12 @@ import com.example.oblig1.sqlDAOs.CatDao;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* This class is helping Quiz.java
+*  - checking that the user´s guess
+*  - creates a random list of cats
+*  - return the amount of correct answers
+ */
 public class QuizHelp {
 
     private List<Cat> original;
@@ -46,7 +52,7 @@ public class QuizHelp {
             if(!cats.contains(original.get(tall)))           //Check if it already exist
                 cats.add(j, original.get(tall));             //Add to the list
             else
-                j--;      //To secure that you get all cats transferred to the new list
+                j--;      //To secure that all cats are transferred to the new list
         }
         return cats;
 
