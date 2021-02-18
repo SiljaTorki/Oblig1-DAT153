@@ -15,12 +15,19 @@ import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.DatabaseHelper;
 import java.util.List;
 
+/**
+* This class is responsible for providing a visual of all elements in the database.
+* It also makes it possible for the users to delete selected images
+* and also to add new images, by redirecting them to the Add.class.
+*
+* The view is updated, when a image is deleted og added.
+ */
+
 public class Database extends AppCompatActivity {
 
     ListView listView;
     private List<Cat> cats;  // A list to store the cat-photos in
     private int deleted = 0;
-    //private DatabaseClient clientDB;
     private DatabaseHelper dbHelper;
 
 
