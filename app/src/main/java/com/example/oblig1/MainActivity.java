@@ -9,7 +9,10 @@ import android.widget.Button;
 
 import com.example.oblig1.helpers.DatabaseHelper;
 
-//import com.example.oblig1.domain.CatList;
+/**
+*  This class provides a visual of the three most important buttons of the application
+*  It also sets up the database, making it ready for use
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //Sets up the database
         dbHelper = new DatabaseHelper(getApplicationContext());
         dbHelper.setUp();
 
-        Button btn1 = (Button) findViewById(R.id.buttonQuiz);       //The first button is created´"Ta quiz"
-        btn1.setOnClickListener(new View.OnClickListener() {        //The first buttons action is created
+        //The buttons are implemented
+        Button btnQuiz = (Button) findViewById(R.id.buttonQuiz);
+        Button btnAddImage = (Button) findViewById(R.id.buttonAddImageMain);
+        Button btnDatabase = (Button) findViewById(R.id.buttonDatabase);
+
+
+       //Redirects the user to the Quiz-page
+        btnQuiz.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //this should send the user to the quiz-activity
                 Intent intent = new Intent(MainActivity.this, Quiz.class);
@@ -34,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button btn2 = (Button) findViewById(R.id.buttonAddImageMain);       //The second button is created "Add Image"
-        btn2.setOnClickListener(new View.OnClickListener() {         //The second button´s action is created
+        //Redirects the user to the Add-page
+        btnAddImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // this should make it possible for user to add images from the phone´s library
                 Intent intent = new Intent(MainActivity.this, Add.class);
@@ -43,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btn3 = (Button) findViewById(R.id.buttonDatabase);       //The third button is created "Database"
-        btn3.setOnClickListener(new View.OnClickListener() {            //The third button´s action is created
+       //Redirects the user to the database-page
+        btnDatabase.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // this should make it possible for user to look at all the images added to the quiz
                 Intent intent = new Intent(MainActivity.this, Database.class);
