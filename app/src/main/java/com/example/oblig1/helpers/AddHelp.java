@@ -1,11 +1,13 @@
 package com.example.oblig1.helpers;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-
+/**
+* This class is responsible for checking that the user adds both image and name
+* if either are missing then nothing should be added to the database
+ */
 public class AddHelp {
     private boolean addingOK = false;
 
+    //Checking that the user has chosen both an image and a name
     public String responseUser(String name, String image){
        String response;
        //Method for adding the new cat-image
