@@ -17,6 +17,10 @@ import android.widget.Toast;
 import com.example.oblig1.helpers.AddHelp;
 import com.example.oblig1.helpers.DatabaseHelper;
 
+/**
+*   This class is allowing a user to add their own chosen image to the database
+ */
+
 public class Add extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 100; // the request code defined as an instance variable
     private ImageView iv;
@@ -41,18 +45,19 @@ public class Add extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //connects to the database
         dbHelper = new DatabaseHelper(getApplicationContext());
 
         //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageViewAddClass);
         EditText editText = (EditText)findViewById(R.id.editTextAddClass);
 
-        //The buttons for choosing and adding an image is created
+        //The buttons for choosing and adding an image are created
         Button btnChoose = (Button)findViewById(R.id.buttonChooseImageAdd);
         Button btnAdd = (Button)findViewById(R.id.buttonAdd);
 
         /*
-        *The choose-action is created, by using lambda expression
+        * The choose-action is created, by using lambda expression
         * This methods makes it possible for the user to find and add an image
         */
         btnChoose.setOnClickListener((View v) -> {
@@ -67,10 +72,9 @@ public class Add extends AppCompatActivity {
             //Creates an response to the user, by using responseUser() from AddHelp.java
             name = editText.getText().toString();
             String response = ah.responseUser(name,selectedImage.toString());
-            if(ah.readyForAdding()){
-                dbHelper.insertCatsDB(name,selectedImage.toString());
 
-            }
+            if(ah.readyForAdding())
+                dbHelper.insertCatsDB(name,selectedImage.toString());
 
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
@@ -80,6 +84,10 @@ public class Add extends AppCompatActivity {
         });
     }
 
+    /*
+    * The method makes it possible for the users to choose an image from their phone
+    * When the image is chosen, it is shown in app.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
