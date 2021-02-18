@@ -8,14 +8,14 @@
     tools:context=".Add">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar4"
+        android:id="@+id/my_toolbar_AddClass"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="50dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewAddClass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,19 +26,22 @@
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="90dp"
-        android:text="@string/legg_til"
+        android:text="@string/add_image_add_class"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonVelgBilde" />
+        app:layout_constraintStart_toEndOf="@+id/buttonChooseImageAdd"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddClass" />
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextAddClass"
         android:layout_width="244dp"
         android:layout_height="74dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="200dp"
         android:autofillHints=""
@@ -46,35 +49,37 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAddClass" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewAddClass"
         android:layout_width="284dp"
         android:layout_height="293dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="119dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="150dp"
-        android:contentDescription="@string/bilde"
-        app:layout_constraintBottom_toTopOf="@+id/buttonVelgBilde"
+        android:contentDescription="@string/add_image_add_class"
+        app:layout_constraintBottom_toTopOf="@+id/buttonChooseImageAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/buttonVelgBilde"
+        android:id="@+id/buttonChooseImageAdd"
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="90dp"
-        android:text="@string/velg_bilde"
+        android:text="@string/choose_image"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddClass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,21 +28,21 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="55dp"
         android:layout_marginBottom="95dp"
-        android:text="@string/ta_quizen"
+        android:text="@string/quiz"
         android:textSize="24sp"
         android:theme="@style/Button.Green"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBilde"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddImageMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonBilde"
+        android:id="@+id/buttonAddImageMain"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginBottom="316dp"
-        android:text="@string/legg_til_bilde"
+        android:text="@string/add_image_main"
         android:textSize="24sp"
         android:theme="@style/Button.Green"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,5 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBilde" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddImageMain" />
 </androidx.constraintlayout.widget.ConstraintLayout>

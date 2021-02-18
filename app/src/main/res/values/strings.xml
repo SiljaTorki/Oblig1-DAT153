@@ -1,22 +1,21 @@
 <resources>
     <string name="app_name">Oblig1</string>
-    <string name="legg_til_bilde">Add image</string>
-    <string name="ta_quizen">Quiz</string>
+    <string name="add_image_add_class">Add image</string>
+    <string name="quiz">Quiz</string>
     <string name="database">Database</string>
-    <string name="legg_til">Add image</string>
+    <string name="add_image_database">Add image</string>
     <string name="name">Name</string>
     <string name="navn_katt_3">Navn: Katt 3</string>
     <string name="navn_katt_2">Navn: Katt 2</string>
     <string name="navn_katt_1">Navn: Katt 1</string>
-    <string name="fjern">Remove</string>
-    <string name="navn_hj_rdis">Navn: Hjørdis</string>
-    <string name="navn_atle">Navn: Atle</string>
-    <string name="navn_figaro">Navn: Figaro</string>
+    <string name="remove">Remove</string>
     <string name="catone">CatOne</string>
     <string name="cattwo">CatTwo</string>
     <string name="catthree">CatThree</string>
-    <string name="velg_bilde">Choose image</string>
-    <string name="bilde">Bilde</string>
-    <string name="sjekk_svar">Check answer</string>
-    <string name="neste">Next</string>
+    <string name="choose_image">Choose image</string>
+    <string name="image_add_class">Image</string>
+    <string name="check_answer">Check answer</string>
+    <string name="next">Next</string>
+    <string name="catimage_quiz">catImage_quiz</string>
+    <string name="add_image_main">add image main</string>
 </resources>
