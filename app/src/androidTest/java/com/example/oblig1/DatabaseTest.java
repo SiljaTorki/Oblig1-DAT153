@@ -1,5 +1,5 @@
 package com.example.oblig1;
-
+/*
 import android.content.Context;
 
 import androidx.room.Room;
@@ -54,3 +54,4 @@ public class DatabaseTest {
 
 
 }
+*/
