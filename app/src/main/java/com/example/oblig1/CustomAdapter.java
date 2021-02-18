@@ -14,6 +14,11 @@ import com.example.oblig1.domain.Cat;
 
 import java.util.List;
 
+/**
+* This class is helping with providing a ListView over all the elements in the database
+* It also creates CheckBoxes, which makes it possible to delete chosen cat-names and images
+ */
+
 public class CustomAdapter extends ArrayAdapter<Cat> {
     private List<Cat> cats;
     Context context;
