@@ -29,24 +29,20 @@ public class DatabaseHelper {
     *  The constructor gets access to the database
     */
     public DatabaseHelper(Context mCtx){
-        catDatabase = Room.databaseBuilder(
-                mCtx,
-                AppDatabase.class,
-                DATABASE).build();
-
+        DatabaseClient clientDB = DatabaseClient.getInstance(mCtx);
+        catDatabase = clientDB.getAppDatabase();
     }
     /*
     * Initilize setUp, to add the three original images to the database
     * This method does not contain Thread.sleep(),
-    * since the UI thread does not have to wait for it to finish in MainActivity.clss
+    * since the UI thread does not have to wait for it to finish in MainActivity.class
      */
     public void setUp(){
         new Thread(new Runnable() {
             @Override
             public void run() {
 
-                try {
-                    List<Cat> cats = catDatabase.catDao().getAll();
+                   cats = catDatabase.catDao().getAll();
                     if(cats.size() == 0) {
 
                         Cat cat1 = new Cat("Cat one", DRAWABLE + "cat_one");
@@ -56,31 +52,45 @@ public class DatabaseHelper {
                         catDatabase.catDao().insert(cat1);
                         catDatabase.catDao().insert(cat2);
                         catDatabase.catDao().insert(cat3);
+
                     }
-                } finally {
-                    catDatabase.close();
-                }
             }
         }).start();
     }
 
 
     //This method is getting the catnames and images from the database
-    private void  getListFromDB(){
+    public void getListFromDB(){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
                     cats = catDatabase.catDao().getAll();
-                }finally{
-                    catDatabase.close();
-                }
+
             }}).start();
-        try {
-            Thread.sleep(1000);
+
+        while(cats == null){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void insertCatsDB(String name, String image){
+        Cat cat = new Cat(name, image);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                catDatabase.catDao().insert(cat);
+
+            }}).start();
+
+      /*  try {
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /*
@@ -88,16 +98,11 @@ public class DatabaseHelper {
     * It gets the status of the checked check-boxes
     * then it deletes the images and names of the cats that are checked
      */
-    public void deleteCatsDB(CustomAdapter adapter, int count, Context mCtx){
-        catDatabase = Room.databaseBuilder(
-                mCtx,
-                AppDatabase.class,
-                DATABASE).build();
+    public void deleteCatsDB(CustomAdapter adapter, int count){
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
                     int deleted = 0;
 
                     for (int i = 0; i < count; i++) {
@@ -110,9 +115,7 @@ public class DatabaseHelper {
                         }
                     }
 
-                }finally{
-                    catDatabase.close();
-                }
+
             }
         }).start();
 
