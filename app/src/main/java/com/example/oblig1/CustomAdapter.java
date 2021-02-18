@@ -17,6 +17,8 @@ import java.util.List;
 /**
 * This class is helping with providing a ListView over all the elements in the database
 * It also creates CheckBoxes, which makes it possible to delete chosen cat-names and images
+*
+* The class is used in the database.java
  */
 
 public class CustomAdapter extends ArrayAdapter<Cat> {

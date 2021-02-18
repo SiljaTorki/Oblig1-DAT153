@@ -4,6 +4,12 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+/**
+* The class is creating access to the database
+ *
+* It is used in the databaseHelper.java
+ */
+
 public class DatabaseClient {
 
     private Context mCtx;
