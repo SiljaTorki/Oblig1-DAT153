@@ -11,31 +11,33 @@ import com.example.oblig1.sqlLite.AppDatabase;
 import com.example.oblig1.sqlLite.DatabaseClient;
 
 import java.util.List;
-/*
-* This class is meant to help setting, getting or deleting images in the database
-* In the methods is Thread.sleep used, which is not ideal.
-* The main thread would not wait for the new threads to be done,
-* if Thread.sleep() was not initilized
+/**
+* This class is meant to help setting, inserting, getting or deleting images in the database
+* In the comments, the main thread is referred to as the UI-thread
  */
 
 public class DatabaseHelper {
     public final static String DATABASE = "catDatabase";
     final String DRAWABLE = "android.resource://com.example.oblig1/drawable/";
-    //DatabaseClient clientDB;
-    AppDatabase catDatabase;
+    private AppDatabase catDatabase;
     private List<Cat> cats;
+    private boolean isDone;
 
-    /*
+    /**
     *  The constructor gets access to the database
+    *  with help from the DatabaseClient.java
     */
     public DatabaseHelper(Context mCtx){
         DatabaseClient clientDB = DatabaseClient.getInstance(mCtx);
         catDatabase = clientDB.getAppDatabase();
     }
-    /*
-    * Initilize setUp, to add the three original images to the database
+
+    /**
+    * Initializes setUp, to add the three original images to the database
     * This method does not contain Thread.sleep(),
     * since the UI thread does not have to wait for it to finish in MainActivity.class
+     *
+     * used in MainActivity.class
      */
     public void setUp(){
         new Thread(new Runnable() {
@@ -59,8 +61,25 @@ public class DatabaseHelper {
     }
 
 
-    //This method is getting the catnames and images from the database
-    public void getListFromDB(){
+    /**
+     * Gets the complete list of all the cats from the database
+     *
+     * Is used in quiz.java and in database.java
+     */
+    public List<Cat> getAllCats(){
+        getListFromDB();
+        return cats;
+    }
+
+    /**
+    * This method is getting the cat-names and -images from the database
+    * It uses a while-loop in case the new Thread is not done,
+    * and must unfortunately wait to prevent an app-crash.
+    * Thread.sleep() is not ideally
+     *
+     * used by the method getAllCats() in this class
+     */
+    private void getListFromDB(){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -77,6 +96,11 @@ public class DatabaseHelper {
         }
     }
 
+    /**
+    * Inserts the cat-name- and -image into the database
+    *
+    * It is used in Add.class
+     */
     public void insertCatsDB(String name, String image){
         Cat cat = new Cat(name, image);
         new Thread(new Runnable() {
@@ -85,21 +109,21 @@ public class DatabaseHelper {
                 catDatabase.catDao().insert(cat);
 
             }}).start();
-
-      /*  try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
     }
 
-    /*
-    * The methods deletes the selected images in the database
-    * It gets the status of the checked check-boxes
-    * then it deletes the images and names of the cats that are checked
+    /**
+    * Deletes the selected images and names in the database
+    * It gets the status of the checkboxes
+    * then it deletes the checked cats
+    * cats.get(i-deleted) is used in order to find the correct cat
+    *
+    * It also has a while-loop, to force the UI-thread to wait
+    * until the new Thread is done --> not ideally
+    *
+    * It is used in Database.java
      */
     public void deleteCatsDB(CustomAdapter adapter, int count){
-
+        isDone = false;
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -114,21 +138,18 @@ public class DatabaseHelper {
                             deleted++;
                         }
                     }
-
-
+                    isDone = true;
             }
         }).start();
 
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(!isDone){
+             try {
+                  Thread.sleep(100);
+             } catch (InterruptedException e) {
+               e.printStackTrace();
+             }
         }
     }
 
-    //Gets the complete list of cats from the database
-    public List<Cat> getAllCats(){
-        getListFromDB();
-        return cats;
-    }
+
 }
