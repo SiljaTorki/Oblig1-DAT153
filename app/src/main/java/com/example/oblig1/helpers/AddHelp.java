@@ -12,10 +12,10 @@ public class AddHelp {
        String response;
        //Method for adding the new cat-image
         if(!name.trim().equals("") && !image.trim().equals("")) {
-            System.out.println("ADDED");
             response = "Image is added!";                //Toast-text if image is added
             addingOK = true;
         }else{
+            addingOK = false;
             response = "Please add text and/or image";   //Toast-text if name or image is missing
         }
         return response;

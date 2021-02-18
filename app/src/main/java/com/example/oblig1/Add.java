@@ -28,29 +28,21 @@ public class Add extends AppCompatActivity {
     private AddHelp ah = new AddHelp();
     private Uri selectedImage;
     private DatabaseHelper dbHelper;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        // my_toolbar is defined in the layout file
-        Toolbar myChildToolbar =
-                (Toolbar) findViewById(R.id.my_toolbar_AddClass);
-        setSupportActionBar(myChildToolbar);
-
-        // Get a support ActionBar corresponding to this toolbar
-        ActionBar ab = getSupportActionBar();
-
-        // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
+        theToolbar();
 
         //connects to the database
         dbHelper = new DatabaseHelper(getApplicationContext());
 
         //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageViewAddClass);
-        EditText editText = (EditText)findViewById(R.id.editTextAddClass);
+        editText = (EditText)findViewById(R.id.editTextAddClass);
 
         //The buttons for choosing and adding an image are created
         Button btnChoose = (Button)findViewById(R.id.buttonChooseImageAdd);
@@ -68,19 +60,8 @@ public class Add extends AppCompatActivity {
 
         //The add-action is created
         btnAdd.setOnClickListener((View v) -> {
+            addAndResponse();
 
-            //Creates an response to the user, by using responseUser() from AddHelp.java
-            name = editText.getText().toString();
-            String response = ah.responseUser(name,selectedImage.toString());
-
-            if(ah.readyForAdding())
-                dbHelper.insertCatsDB(name,selectedImage.toString());
-
-            Context context = getApplicationContext();
-            int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
-            Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
-
-            toast.show();
         });
     }
 
@@ -100,5 +81,44 @@ public class Add extends AppCompatActivity {
                     getContentResolver().takePersistableUriPermission(selectedImage, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 }
                 break;
-        }}
+        }
     }
+
+
+    /*
+    * the action that happens when the AddButton is clicked
+    * checking that the user has provided both an image and name with help from AddHelp.java
+     */
+    private void addAndResponse(){
+        //Creates an response to the user, by using responseUser() from AddHelp.java
+        name = editText.getText().toString();
+        String response = ah.responseUser(name,selectedImage.toString());
+
+        //checking that the image and name can be added, with help from AddHelp.java
+        if(ah.readyForAdding())
+            dbHelper.insertCatsDB(name,selectedImage.toString());
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
+        Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
+        //provides a response for the user
+        toast.show();
+
+        //Removing the text
+        editText.getText().clear();
+    }
+
+    //make it possible for the user to go back to MainActivity.java
+    private void theToolbar() {
+        // my_toolbar is defined in the layout file
+        Toolbar myChildToolbar =
+                (Toolbar) findViewById(R.id.my_toolbar_AddClass);
+        setSupportActionBar(myChildToolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
+}
