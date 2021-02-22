@@ -132,7 +132,7 @@ public class DatabaseHelper {
                     for (int i = 0; i < count; i++) {
 
                         if (adapter.getCheckBoxStates()[i]) {
-                            adapter.getCheckBoxStates()[i] = false;         //to remove number of checked boxes
+                            adapter.getCheckBoxStates()[i] = false;         //to prevent the next checkboxes from being checked
                             Cat cat = cats.get(i - deleted);
                             catDatabase.catDao().delete(cat);
                             cats.remove(cats.get(i - deleted));
