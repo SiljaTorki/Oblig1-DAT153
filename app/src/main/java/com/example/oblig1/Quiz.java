@@ -24,9 +24,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/**
+/*
 * The class is used to show the cat-images, and to update the score if the user guess correctly
-*
+* We have now progressed from using multiple new Threads, to use LivData
  */
 
 public class Quiz extends AppCompatActivity {
@@ -34,12 +34,10 @@ public class Quiz extends AppCompatActivity {
     TextView score;
     TextView count;
 
-    private List<Cat> cats;
     private static String catName;  //Used for testing only
     private QuizHelp quizh = new QuizHelp(); //Calling for the quiz-helping class
 
     private int counter = 1;
-    private int i = 0; // Position in the list
     private int max;
 
     private Button btnCheckAnswer;
@@ -47,8 +45,6 @@ public class Quiz extends AppCompatActivity {
 
     private ImageView image;
     private EditText editText;
-
-    private DatabaseHelper dbHelper;
 
     private Iterator<Cat> catIterator;
 
@@ -58,9 +54,6 @@ public class Quiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        //gets access to the database
-        dbHelper = new DatabaseHelper(getApplicationContext());
 
         DatabaseClient dbClient = DatabaseClient.getInstance(this);
         AppDatabase catDatabase = dbClient.getAppDatabase();
@@ -78,10 +71,6 @@ public class Quiz extends AppCompatActivity {
 
         theToolbar();
 
-        //getFromDB();
-
-
-
         //Finding the user´s input
         editText = (EditText) findViewById(R.id.editTextGuess);
 
@@ -95,10 +84,6 @@ public class Quiz extends AppCompatActivity {
         //Unable the buttons until the quiz is ready
         btnCheckAnswer.setEnabled(false);
         btnNext.setEnabled(false);
-
-        //Setting the first image
-       // image.setImageURI(Uri.parse(cats.get(i).getImage()));
-
 
         /*
         * Checking the answer of the user´s input, by using a lambda expression
@@ -125,7 +110,6 @@ public class Quiz extends AppCompatActivity {
     /*
     Finding the new cat to be shown in the quiz
      */
-
     private void findCat(){
         if( catIterator.hasNext()){
             cat = catIterator.next();
