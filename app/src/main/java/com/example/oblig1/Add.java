@@ -14,8 +14,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.AddHelp;
 import com.example.oblig1.helpers.DatabaseHelper;
+import com.example.oblig1.viewModels.ViewModelDatabase;
+
+import java.util.List;
 
 /**
 *   This class is allowing a user to add their own chosen image to the database
@@ -29,6 +33,7 @@ public class Add extends AppCompatActivity {
     private Uri selectedImage;
     private DatabaseHelper dbHelper;
     private EditText editText;
+    private ViewModelDatabase vmd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class Add extends AppCompatActivity {
         //The buttons for choosing and adding an image are created
         Button btnChoose = (Button)findViewById(R.id.buttonChooseImageAdd);
         Button btnAdd = (Button)findViewById(R.id.buttonAdd);
+
+        vmd = new ViewModelDatabase(getApplication());
 
         /*
         * The choose-action is created, by using lambda expression
@@ -84,7 +91,6 @@ public class Add extends AppCompatActivity {
         }
     }
 
-
     /*
     * the action that happens when the AddButton is clicked
     * checking that the user has provided both an image and name with help from AddHelp.java
@@ -95,9 +101,10 @@ public class Add extends AppCompatActivity {
         String response = ah.responseUser(name,selectedImage.toString());
 
         //checking that the image and name can be added, with help from AddHelp.java
-        if(ah.readyForAdding())
-            dbHelper.insertCatsDB(name,selectedImage.toString());
-
+        if(ah.readyForAdding()) {
+            Cat cat = new Cat(name, selectedImage.toString());
+            vmd.insert(cat);
+        }
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
         Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
