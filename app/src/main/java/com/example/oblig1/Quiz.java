@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-/*
+/**
 * The class is used to show the cat-images, and to update the score if the user guess correctly
 * We have now progressed from using multiple new Threads, to use LivData
  */
