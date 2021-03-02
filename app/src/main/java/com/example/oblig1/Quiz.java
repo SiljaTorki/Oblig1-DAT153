@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +17,11 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
+import com.example.oblig1.sqlLite.AppDatabase;
+import com.example.oblig1.sqlLite.DatabaseClient;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -37,8 +42,6 @@ public class Quiz extends AppCompatActivity {
     private int i = 0; // Position in the list
     private int max;
 
-    private boolean empty = false;
-
     private Button btnCheckAnswer;
     private Button btnNext;
 
@@ -46,6 +49,10 @@ public class Quiz extends AppCompatActivity {
     private EditText editText;
 
     private DatabaseHelper dbHelper;
+
+    private Iterator<Cat> catIterator;
+
+    private Cat cat = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +62,25 @@ public class Quiz extends AppCompatActivity {
         //gets access to the database
         dbHelper = new DatabaseHelper(getApplicationContext());
 
+        DatabaseClient dbClient = DatabaseClient.getInstance(this);
+        AppDatabase catDatabase = dbClient.getAppDatabase();
+        catDatabase.catDao().getAllLive().observe(this, (List<Cat> obs) -> {
+            Collections.shuffle(obs);
+            catIterator = obs.iterator();
+            // Good thing we'll be doing this on the UI thread
+            findCat();
+            // Now we're ready:
+            max = obs.size();
+            scoreAndCount();
+            btnCheckAnswer.setEnabled(true);
+            btnNext.setEnabled(true);
+        });
+
         theToolbar();
 
-        getFromDB();
+        //getFromDB();
 
-        scoreAndCount();
+
 
         //Finding the user´s input
         editText = (EditText) findViewById(R.id.editTextGuess);
@@ -71,8 +92,12 @@ public class Quiz extends AppCompatActivity {
         btnCheckAnswer = (Button)findViewById(R.id.buttonCheckAnswer);
         btnNext = (Button)findViewById(R.id.buttonNext);
 
+        //Unable the buttons until the quiz is ready
+        btnCheckAnswer.setEnabled(false);
+        btnNext.setEnabled(false);
+
         //Setting the first image
-        image.setImageURI(Uri.parse(cats.get(i).getImage()));
+       // image.setImageURI(Uri.parse(cats.get(i).getImage()));
 
 
         /*
@@ -88,11 +113,27 @@ public class Quiz extends AppCompatActivity {
          * using the method updateQuiz()
          */
         btnNext.setOnClickListener((View v) -> {
+            findCat();
             updateQuiz();
 
         });
 
+        ///catName = cats.get(0).getName();
+
+
     }
+    /*
+    Finding the new cat to be shown in the quiz
+     */
+
+    private void findCat(){
+        if( catIterator.hasNext()){
+            cat = catIterator.next();
+            image.setImageURI(Uri.parse(cat.getImage()));
+        }
+
+    }
+
 
     /*
     * Setting the score and count the first time
@@ -109,21 +150,6 @@ public class Quiz extends AppCompatActivity {
 
         count.setText(quizCount);
         score.setText(quizScore);
-    }
-
-
-    /*
-     * Gets the catList from the database with help from DatabaseHelper.java
-     * Generates a random list of cats with help from QuizHelp.java
-     */
-    private void getFromDB(){
-        //Getting the list of cats from the database
-        cats = dbHelper.getAllCats();
-        cats = quizh.randomList(cats);
-        max = cats.size();
-
-        //Only used for testing
-        catName = cats.get(0).getName();
     }
 
 
@@ -146,8 +172,8 @@ public class Quiz extends AppCompatActivity {
     //Finds and show the next image in the list
     private void updateQuiz(){
         //Jumps to the next image but stops at the last one
-        if (i < cats.size()-1) {
-            i++;
+
+        if(counter < max){
             counter++;
 
             //Updates the counter
@@ -155,7 +181,7 @@ public class Quiz extends AppCompatActivity {
             count.setText(quizCount1);
 
             //Finding the new image
-            image.setImageURI(Uri.parse(cats.get(i).getImage()));
+            image.setImageURI(Uri.parse(cat.getImage()));
 
             //Empty the editText field
             editText.getText().clear();
@@ -176,7 +202,7 @@ public class Quiz extends AppCompatActivity {
          */
         if(editText != null) {
             String answer = editText.getText().toString();
-            response = quizh.checkAnswer(answer, cats.get(i).getName());
+            response = quizh.checkAnswer(answer, cat.getName());
         }
 
         //Updating the score by calling getCorrect() from QuizHelper
