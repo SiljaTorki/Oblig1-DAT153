@@ -1,13 +1,18 @@
 package com.example.oblig1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.DatabaseHelper;
+import com.example.oblig1.viewModels.ViewModelDatabase;
+
+import java.util.List;
 
 /**
 *  This class provides a visual of the three most important buttons of the application
@@ -16,16 +21,16 @@ import com.example.oblig1.helpers.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHelper dbHelper;
+    private ViewModelDatabase vmd;
+    final String DRAWABLE = "android.resource://com.example.oblig1/drawable/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Sets up the database
-        dbHelper = new DatabaseHelper(getApplicationContext());
-        dbHelper.setUp();
+        //Sets up the database if its empty
+        setup();
 
         //The buttons are implemented
         Button btnQuiz = (Button) findViewById(R.id.buttonQuiz);
@@ -60,5 +65,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
+    // Checks if the database is empty, and adding the three main cats
+    public void setup(){
+    vmd = new ViewModelDatabase(getApplication());
+        vmd.getAllLive().observe(this,(List<Cat> obs) -> {
+        if(obs.size()==0){
+            vmd.insert(new Cat("Cat one", DRAWABLE + "cat_one"));
+            vmd.insert(new Cat("Cat two", DRAWABLE + "cat_two"));
+            vmd.insert(new Cat("Cat three", DRAWABLE + "cat_three3"));
+
+        }
+    });}
 }
