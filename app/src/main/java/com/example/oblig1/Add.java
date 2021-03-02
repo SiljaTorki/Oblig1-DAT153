@@ -31,7 +31,6 @@ public class Add extends AppCompatActivity {
     private String name;
     private AddHelp ah = new AddHelp();
     private Uri selectedImage;
-    private DatabaseHelper dbHelper;
     private EditText editText;
     private ViewModelDatabase vmd;
 
@@ -41,9 +40,6 @@ public class Add extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         theToolbar();
-
-        //connects to the database
-        dbHelper = new DatabaseHelper(getApplicationContext());
 
         //Getting imageView and TextEdit
         iv = (ImageView) findViewById(R.id.imageViewAddClass);
@@ -98,7 +94,7 @@ public class Add extends AppCompatActivity {
     private void addAndResponse(){
         //Creates an response to the user, by using responseUser() from AddHelp.java
         name = editText.getText().toString();
-        String response = ah.responseUser(name,selectedImage.toString());
+        String response = ah.responseUser(name,selectedImage);
 
         //checking that the image and name can be added, with help from AddHelp.java
         if(ah.readyForAdding()) {
