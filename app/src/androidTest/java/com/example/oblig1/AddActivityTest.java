@@ -54,30 +54,22 @@ public class AddActivityTest {
         String catName = "Katy Perry";
         Uri catImageURI = Uri.parse("content://com.android.providers.media.documents/document/image%3A32");
         resultData.setData(catImageURI);
-        // TODO do we need the next two lines
-        resultData.putExtra("kitten", catName);
-        resultData.putExtra("image", catImageURI);
 
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
 
-        //intending(not(isInternal())).respondWith(result);
         intending(hasAction(Intent.ACTION_OPEN_DOCUMENT)).respondWith(result);
 
         AddActivity addActivity = activity;
 
-            int listSize = addActivity.getListSize();
-            onView(withId(R.id.addEditText)).perform(typeText("volker"), closeSoftKeyboard());
-            onView(withId(R.id.addButtonChoose)).perform(click());
-            onView(withId(R.id.addButtonImage))
-                    .perform(click());
+        int listSize = addActivity.getListSize();
+        onView(withId(R.id.addEditText)).perform(typeText("volker"), closeSoftKeyboard());
+        onView(withId(R.id.addButtonChoose)).perform(click());
+        onView(withId(R.id.addButtonImage)).perform(click());
 
-            int newListSize = addActivity.getListSize();
+        int newListSize = addActivity.getListSize();
 
-            //Checking that the previous listSize is smaller than newListSize
-            assertTrue(listSize < newListSize);
-
+        //Checking that the previous listSize is smaller than newListSize
+        assertTrue(listSize < newListSize);
     }
-
-
 }
