@@ -50,10 +50,7 @@ public class AddActivity extends AppCompatActivity {
 
         vmd = new ViewModelDatabase(getApplication());
 
-        /*
-        * The choose-action is created, by using lambda expression
-        * This methods makes it possible for the user to find and add an image
-        */
+        //This method makes it possible for the user to find and add an image
         btnChoose.setOnClickListener((View v) -> {
            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
            intent.setType("image/*");
@@ -125,7 +122,6 @@ public class AddActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
-
 
     //TESTING ONLY
     public Integer getListSize() throws ExecutionException, InterruptedException {
