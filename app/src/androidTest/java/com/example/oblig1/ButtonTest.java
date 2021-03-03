@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 
 @RunWith(AndroidJUnit4.class)
-public class buttonTest {
+public class ButtonTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
