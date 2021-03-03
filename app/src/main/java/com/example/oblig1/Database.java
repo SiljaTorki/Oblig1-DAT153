@@ -8,17 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.repository.Repository;
-import com.example.oblig1.sqlLite.AppDatabase;
-import com.example.oblig1.sqlLite.DatabaseClient;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -32,9 +26,6 @@ import java.util.List;
 public class Database extends AppCompatActivity {
 
     ListView listView;
-    private List<Cat> cats;  // A list to store the cat-photos in
-    private int deleted = 0;
-   // private DatabaseHelper dbHelper;
     private CustomAdapter adapter;
     private ViewModelDatabase vmd;
 
@@ -61,10 +52,6 @@ public class Database extends AppCompatActivity {
 
         });
 
-        //Creates access to the database
-     //   dbHelper = new DatabaseHelper (getApplicationContext());
-      //  cats = dbHelper.getAllCats();
-
         theToolbar();
 
         //Create the view dynamic
@@ -76,7 +63,6 @@ public class Database extends AppCompatActivity {
             Intent intent = new Intent(Database.this, Add.class);
             startActivity(intent);
         });
-
 
         //The remove action is created with lambda expression
         btnRemove.setOnClickListener((View v) -> {
@@ -102,24 +88,27 @@ public class Database extends AppCompatActivity {
     * Deletes the selected cats and updates the ListView
      */
     public void deleteCat(){
-        // Remove the Cat from the database list
-        int count = listView.getCount();  //number of ListView items
 
-        //dbHelper.deleteCatsDB(adapter, count);
-        int deleted = 0;
+       //gets the list to delete the selected cats
+        vmd.getAllLive().observe(this, (List<Cat> obs) -> {
+            int count = listView.getCount();  //number of ListView items
+            int deleted = 0;
 
-        for (int i = 0; i < count; i++) {
+            for (int i = 0; i < count; i++) {
 
-            if (adapter.getCheckBoxStates()[i]) {
-                adapter.getCheckBoxStates()[i] = false;         //to prevent the next checkboxes from being checked
-                Cat cat = cats.get(i - deleted);
-                vmd.delete(cat);;
-                cats.remove(cats.get(i - deleted));
-                deleted++;
+                if (adapter.getCheckBoxStates()[i]) {
+                    adapter.getCheckBoxStates()[i] = false;         //to prevent the next checkboxes from being checked
+                    Cat cat = obs.get(i - deleted);
+                    // Remove the Cat from the database list
+                    vmd.delete(cat);
+                    obs.remove(obs.get(i-deleted));
+                    deleted++;
+                }
             }
-        }
 
-        //Update the view
-        listView.setAdapter(adapter);
+            //Update the view
+            listView.setAdapter(adapter);
+        });
+
     }
 }
