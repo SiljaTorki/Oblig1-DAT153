@@ -18,6 +18,7 @@ import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
 import com.example.oblig1.sqlLite.AppDatabase;
 import com.example.oblig1.sqlLite.DatabaseClient;
+import com.example.oblig1.viewModels.ViewModelDatabase;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -46,7 +47,7 @@ public class Quiz extends AppCompatActivity {
     private EditText editText;
 
     private Iterator<Cat> catIterator;
-
+    private ViewModelDatabase vmd;
     private Cat cat = null;
 
     @Override
@@ -54,9 +55,7 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        DatabaseClient dbClient = DatabaseClient.getInstance(this);
-        AppDatabase catDatabase = dbClient.getAppDatabase();
-        catDatabase.catDao().getAllLive().observe(this, (List<Cat> obs) -> {
+        vmd.getAllLive().observe(this, (List<Cat> obs) -> {
             Collections.shuffle(obs);
             catIterator = obs.iterator();
             // Good thing we'll be doing this on the UI thread
