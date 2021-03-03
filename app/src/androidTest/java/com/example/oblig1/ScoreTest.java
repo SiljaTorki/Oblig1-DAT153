@@ -39,8 +39,8 @@ public class ScoreTest {
 
         String rightName = com.example.oblig1.QuizActivity.getCatName();
         onView(withId(R.id.quizScore)).check(matches(withText("Your score: " + 0 )));
-        onView(withId(R.id.editTextGuess)).perform(typeText(rightName), closeSoftKeyboard());
-        onView(withId(R.id.buttonCheckAnswer)).perform(click());
+        onView(withId(R.id.quizEditText)).perform(typeText(rightName), closeSoftKeyboard());
+        onView(withId(R.id.quizButtonCheck)).perform(click());
         onView(withId(R.id.quizScore)).check(matches(withText("Your score: " + 1 )));
 
     }
@@ -56,8 +56,8 @@ public class ScoreTest {
     @Test
     public void scoreIsWrong() {
         onView(withId(R.id.quizScore)).check(matches(withText("Your score: " + 0 )));
-        onView(withId(R.id.editTextGuess)).perform(typeText("Hei"), closeSoftKeyboard());
-        onView(withId(R.id.buttonCheckAnswer)).perform(click());
+        onView(withId(R.id.quizEditText)).perform(typeText("Hei"), closeSoftKeyboard());
+        onView(withId(R.id.quizButtonCheck)).perform(click());
         onView(withId(R.id.quizScore)).check(matches(withText("Your score: " + 0 )));
     }
 

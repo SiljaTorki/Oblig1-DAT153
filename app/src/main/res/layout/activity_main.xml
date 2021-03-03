@@ -14,14 +14,14 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/buttonQuiz"
+        app:layout_constraintBottom_toTopOf="@+id/mainButtonQuiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <Button
-        android:id="@+id/buttonQuiz"
+        android:id="@+id/mainButtonQuiz"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginStart="55dp"
@@ -31,14 +31,14 @@
         android:text="@string/quiz"
         android:textSize="24sp"
         android:theme="@style/Button.Green"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddImageMain"
+        app:layout_constraintBottom_toTopOf="@+id/mainButtonAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonAddImageMain"
+        android:id="@+id/mainButtonAdd"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginBottom="316dp"
@@ -49,10 +49,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonQuiz" />
+        app:layout_constraintTop_toBottomOf="@+id/mainButtonQuiz" />
 
     <Button
-        android:id="@+id/buttonDatabase"
+        android:id="@+id/mainButtonDatabase"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="104dp"
@@ -62,5 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddImageMain" />
+        app:layout_constraintTop_toBottomOf="@+id/mainButtonAdd" />
 </androidx.constraintlayout.widget.ConstraintLayout>

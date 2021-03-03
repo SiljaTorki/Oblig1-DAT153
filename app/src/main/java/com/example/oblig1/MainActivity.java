@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setup();
 
         //The buttons are implemented
-        Button btnQuiz = (Button) findViewById(R.id.buttonQuiz);
-        Button btnAddImage = (Button) findViewById(R.id.buttonAddImageMain);
-        Button btnDatabase = (Button) findViewById(R.id.buttonDatabase);
+        Button btnQuiz = (Button) findViewById(R.id.mainButtonQuiz);
+        Button btnAddImage = (Button) findViewById(R.id.mainButtonAdd);
+        Button btnDatabase = (Button) findViewById(R.id.mainButtonDatabase);
 
 
        //Redirects the user to the QuizActivity-page

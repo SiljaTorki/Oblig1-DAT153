@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.AddHelp;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -43,12 +41,12 @@ public class AddActivity extends AppCompatActivity {
         theToolbar();
 
         //Getting imageView and TextEdit
-        iv = (ImageView) findViewById(R.id.imageViewAddClass);
-        editText = (EditText)findViewById(R.id.editTextAddClass);
+        iv = (ImageView) findViewById(R.id.addImageView);
+        editText = (EditText)findViewById(R.id.addEditText);
 
         //The buttons for choosing and adding an image are created
-        Button btnChoose = (Button)findViewById(R.id.buttonChooseImageAdd);
-        Button btnAdd = (Button)findViewById(R.id.buttonAdd);
+        Button btnChoose = (Button)findViewById(R.id.addButtonChoose);
+        Button btnAdd = (Button)findViewById(R.id.addButtonImage);
 
         vmd = new ViewModelDatabase(getApplication());
 

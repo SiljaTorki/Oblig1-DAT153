@@ -67,9 +67,9 @@ public class AddActivityTest {
         AddActivity addActivity = activity;
 
             int listSize = addActivity.getListSize();
-            onView(withId(R.id.editTextAddClass)).perform(typeText("volker"), closeSoftKeyboard());
-            onView(withId(R.id.buttonChooseImageAdd)).perform(click());
-            onView(withId(R.id.buttonAdd))
+            onView(withId(R.id.addEditText)).perform(typeText("volker"), closeSoftKeyboard());
+            onView(withId(R.id.addButtonChoose)).perform(click());
+            onView(withId(R.id.addButtonImage))
                     .perform(click());
 
             int newListSize = addActivity.getListSize();

@@ -36,7 +36,7 @@ public class DatabaseActivity extends AppCompatActivity {
 
         //The remove- and add-button are created
         Button btnAdd = (Button)findViewById(R.id.buttonToAdd);
-        Button btnRemove = (Button)findViewById(R.id.buttonToRemove);
+        Button btnRemove = (Button)findViewById(R.id.databaseButtonRemove);
 
         btnAdd.setEnabled(false);
         btnRemove.setEnabled(false);

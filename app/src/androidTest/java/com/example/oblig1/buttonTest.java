@@ -47,10 +47,10 @@ public class buttonTest {
     @Test
     public void pushButton() {
         //onView(withText("Hello world!")).check(matches(isDisplayed()));
-        onView(withId(R.id.buttonQuiz))
+        onView(withId(R.id.mainButtonQuiz))
                 .check(matches((isDisplayed())));
 
-        onView(withId(R.id.buttonQuiz))
+        onView(withId(R.id.mainButtonQuiz))
                 .perform(click());
 
         intended(

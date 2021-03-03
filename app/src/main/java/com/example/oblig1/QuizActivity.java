@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.*;
-import com.example.oblig1.sqlLite.AppDatabase;
-import com.example.oblig1.sqlLite.DatabaseClient;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
 import java.util.Collections;
@@ -58,14 +55,14 @@ public class QuizActivity extends AppCompatActivity {
         theToolbar();
 
         //Finding the user´s input
-        editText = (EditText) findViewById(R.id.editTextGuess);
+        editText = (EditText) findViewById(R.id.quizEditText);
 
         //Getting the ImageView
-        image = (ImageView) findViewById(R.id.imageViewQuiz);
+        image = (ImageView) findViewById(R.id.quizImageView);
 
         //Implementing the buttons
-        btnCheckAnswer = (Button)findViewById(R.id.buttonCheckAnswer);
-        btnNext = (Button)findViewById(R.id.buttonNext);
+        btnCheckAnswer = (Button)findViewById(R.id.quizButtonCheck);
+        btnNext = (Button)findViewById(R.id.quizButtonNext);
 
         //Unable the buttons until the quiz is ready
         btnCheckAnswer.setEnabled(false);

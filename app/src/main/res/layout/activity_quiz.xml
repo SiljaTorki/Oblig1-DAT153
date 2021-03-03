@@ -14,7 +14,7 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+        app:layout_constraintBottom_toTopOf="@+id/quizButtonNext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,7 @@
         android:layout_marginBottom="8dp"
         android:text=""
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewQuiz"
+        app:layout_constraintBottom_toTopOf="@+id/quizImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/quizScore"
@@ -49,7 +49,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageViewQuiz"
+        android:id="@+id/quizImageView"
         android:layout_width="284dp"
         android:layout_height="364dp"
         android:layout_marginStart="63dp"
@@ -57,14 +57,14 @@
         android:layout_marginEnd="63dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/catimage_quiz"
-        app:layout_constraintBottom_toTopOf="@+id/editTextGuess"
+        app:layout_constraintBottom_toTopOf="@+id/quizEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/buttonCheckAnswer"
+        android:id="@+id/quizButtonCheck"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
@@ -75,12 +75,12 @@
         android:text="@string/check_answer"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintEnd_toStartOf="@+id/quizButtonNext"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGuess" />
+        app:layout_constraintTop_toBottomOf="@+id/quizEditText" />
 
     <EditText
-        android:id="@+id/editTextGuess"
+        android:id="@+id/quizEditText"
         android:layout_width="261dp"
         android:layout_height="48dp"
         android:layout_marginStart="73dp"
@@ -91,10 +91,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewQuiz" />
+        app:layout_constraintTop_toBottomOf="@+id/quizImageView" />
 
     <Button
-        android:id="@+id/buttonNext"
+        android:id="@+id/quizButtonNext"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -106,8 +106,8 @@
         android:theme="@style/Button.Blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonCheckAnswer"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGuess" />
+        app:layout_constraintStart_toEndOf="@+id/quizButtonCheck"
+        app:layout_constraintTop_toBottomOf="@+id/quizEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

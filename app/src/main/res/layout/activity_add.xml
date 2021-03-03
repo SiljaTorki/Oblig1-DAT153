@@ -15,14 +15,14 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewAddClass"
+        app:layout_constraintBottom_toTopOf="@+id/addImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <Button
-        android:id="@+id/buttonAdd"
+        android:id="@+id/addButtonImage"
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
@@ -33,11 +33,11 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonChooseImageAdd"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddClass" />
+        app:layout_constraintStart_toEndOf="@+id/addButtonChoose"
+        app:layout_constraintTop_toBottomOf="@+id/addEditText" />
 
     <EditText
-        android:id="@+id/editTextAddClass"
+        android:id="@+id/addEditText"
         android:layout_width="244dp"
         android:layout_height="74dp"
         android:layout_marginStart="80dp"
@@ -50,10 +50,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewAddClass" />
+        app:layout_constraintTop_toBottomOf="@+id/addImageView" />
 
     <ImageView
-        android:id="@+id/imageViewAddClass"
+        android:id="@+id/addImageView"
         android:layout_width="284dp"
         android:layout_height="293dp"
         android:layout_marginStart="70dp"
@@ -61,14 +61,14 @@
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="150dp"
         android:contentDescription="@string/add_image_add_class"
-        app:layout_constraintBottom_toTopOf="@+id/buttonChooseImageAdd"
+        app:layout_constraintBottom_toTopOf="@+id/addButtonChoose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/buttonChooseImageAdd"
+        android:id="@+id/addButtonChoose"
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginStart="24dp"
@@ -78,8 +78,8 @@
         android:text="@string/choose_image"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
+        app:layout_constraintEnd_toStartOf="@+id/addButtonImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddClass" />
+        app:layout_constraintTop_toBottomOf="@+id/addEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
