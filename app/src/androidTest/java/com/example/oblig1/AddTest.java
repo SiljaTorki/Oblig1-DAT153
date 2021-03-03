@@ -26,12 +26,16 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intending;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.isInternal;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static java.util.EnumSet.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class AddTest {
@@ -50,8 +54,7 @@ public class AddTest {
 
     @Test
     public void addButton() {
-       // onView(withId(R.id.buttonVelgBilde))
-         //       .perform(click());
+        int listSize = Add.getListSize();
 
         Intent resultData = new Intent();
         String catName = "Katy Perry";
@@ -64,20 +67,16 @@ public class AddTest {
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
 
-        // intending(not(isInternal())).respondWith(result);
+      // intending(not(isInternal())).respondWith(result);
         intending(toPackage("com.example.oblig1")).respondWith(result);
-
-
-
-      //  onData(allOf(is(instanceOf(.class)), hasEntry(equalTo("STR"), is("item: 50"))))
-      //          .perform(click());
-
 
         onView(withId(R.id.buttonAdd))
                 .perform(click());
-        //onView(withId(R.id.editTextName))
-          //      .check(matches(isDisplayed()));
 
+        int newListSize = Add.getListSize();
+
+        //Checking that the previous listSize is smaller than newListSize
+        assertTrue(listSize < newListSize);
     }
 
 

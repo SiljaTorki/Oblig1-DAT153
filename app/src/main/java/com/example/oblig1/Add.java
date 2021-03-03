@@ -33,6 +33,8 @@ public class Add extends AppCompatActivity {
     private EditText editText;
     private ViewModelDatabase vmd;
 
+    private static int size;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,8 @@ public class Add extends AppCompatActivity {
         Button btnAdd = (Button)findViewById(R.id.buttonAdd);
 
         vmd = new ViewModelDatabase(getApplication());
+
+        listSize();//TESTING ONLY
 
         /*
         * The choose-action is created, by using lambda expression
@@ -99,6 +103,9 @@ public class Add extends AppCompatActivity {
         if(ah.readyForAdding()) {
             Cat cat = new Cat(name, selectedImage.toString());
             vmd.insert(cat);
+
+            //TESTING ONLY
+            listSize();
         }
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
@@ -123,4 +130,18 @@ public class Add extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
+
+    // TESTING ONLY
+    public void listSize(){
+        vmd.getAllLive().observe(this,(List<Cat> obs)-> {
+            size = obs.size();
+        });
+    }
+
+    //TESTING ONLY
+    public static int getListSize(){
+        return size;
+    }
+
+
 }
