@@ -56,15 +56,7 @@ public class buttonTest {
 
         intended(
                 hasComponent(Quiz.class.getName())
-                //assertThat(Iterables.getOnlyElement(Intents.getIntents())).hasComponentClass(Quiz.class);
         );
 
-
-
-        //assertTrue(withId(R.id.buttonQuiz).hasComponany(Quiz.class));
-
-        // An intent is fired to launch a different Activity. Robolectric doesn't currently
-        // support launching a new Activity, so use Espresso Intents to verify intent was sent
-       // assertThat(Iterables.getOnlyElement(Intents.getIntents())).hasComponentClass(Quiz.class);
     }
 }
