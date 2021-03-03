@@ -55,18 +55,6 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        vmd.getAllLive().observe(this, (List<Cat> obs) -> {
-            Collections.shuffle(obs);
-            catIterator = obs.iterator();
-            // Good thing we'll be doing this on the UI thread
-            findCat();
-            // Now we're ready:
-            max = obs.size();
-            scoreAndCount();
-            btnCheckAnswer.setEnabled(true);
-            btnNext.setEnabled(true);
-        });
-
         theToolbar();
 
         //Finding the user´s input
@@ -82,6 +70,19 @@ public class Quiz extends AppCompatActivity {
         //Unable the buttons until the quiz is ready
         btnCheckAnswer.setEnabled(false);
         btnNext.setEnabled(false);
+
+        vmd = new ViewModelDatabase(getApplication());
+        vmd.getAllLive().observe(this, (List<Cat> obs) -> {
+            Collections.shuffle(obs);
+            catIterator = obs.iterator();
+            // Good thing we'll be doing this on the UI thread
+            findCat();
+            // Now we're ready:
+            max = obs.size();
+            scoreAndCount();
+            btnCheckAnswer.setEnabled(true);
+            btnNext.setEnabled(true);
+        });
 
         /*
         * Checking the answer of the user´s input, by using a lambda expression
