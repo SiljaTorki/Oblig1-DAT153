@@ -4,7 +4,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -100,12 +99,7 @@ public class Quiz extends AppCompatActivity {
         btnNext.setOnClickListener((View v) -> {
             findCat();
             updateQuiz();
-
         });
-
-        ///catName = cats.get(0).getName();
-
-
     }
     /*
     Finding the new cat to be shown in the quiz
@@ -114,10 +108,11 @@ public class Quiz extends AppCompatActivity {
         if( catIterator.hasNext()){
             cat = catIterator.next();
             image.setImageURI(Uri.parse(cat.getImage()));
+
+            //Only for testing
+            catName = cat.getName();
         }
-
     }
-
 
     /*
     * Setting the score and count the first time
@@ -136,7 +131,6 @@ public class Quiz extends AppCompatActivity {
         score.setText(quizScore);
     }
 
-
     //Make it possible for the user to get back to the MainActivity.class
     private void theToolbar(){
         // my_toolbar_quiz is defined in the layout file
@@ -151,7 +145,6 @@ public class Quiz extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
     }
-
 
     //Finds and show the next image in the list
     private void updateQuiz(){
@@ -171,7 +164,6 @@ public class Quiz extends AppCompatActivity {
             editText.getText().clear();
         }
     }
-
 
     /*
     * Checking the users answer, with help from QuizHelp.java
@@ -198,15 +190,12 @@ public class Quiz extends AppCompatActivity {
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, response, duration);
         toast.show();
-
     }
-
 
     //Only used for testing
     public static String getCatName() {
         return catName;
     }
-
 }
 
 
