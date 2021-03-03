@@ -18,12 +18,12 @@ import java.util.List;
 /**
 * This class is responsible for providing a visual of all elements in the database.
 * It also makes it possible for the users to delete selected images
-* and also to add new images, by redirecting the user to the Add.class.
+* and also to add new images, by redirecting the user to the AddActivity.class.
 *
 * The view is updated, when a image is deleted og added.
  */
 
-public class Database extends AppCompatActivity {
+public class DatabaseActivity extends AppCompatActivity {
 
     ListView listView;
     private CustomAdapter adapter;
@@ -43,7 +43,7 @@ public class Database extends AppCompatActivity {
 
         vmd = new ViewModelDatabase(getApplication());
         vmd.getAllLive().observe(this, (List<Cat> obs) ->{
-            adapter = new CustomAdapter(obs,Database.this);
+            adapter = new CustomAdapter(obs, DatabaseActivity.this);
             //Lists all the cats
             listView.setAdapter(adapter);
 
@@ -60,7 +60,7 @@ public class Database extends AppCompatActivity {
         //The add-button is created with lambda expression
         btnAdd.setOnClickListener((View v) -> {
             //this should send the user to the add-activity
-            Intent intent = new Intent(Database.this, Add.class);
+            Intent intent = new Intent(DatabaseActivity.this, AddActivity.class);
             startActivity(intent);
         });
 

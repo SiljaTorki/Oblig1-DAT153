@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="*"
-        tools:context=".Database">
+        tools:context=".DatabaseActivity">
 
 
         <TableRow

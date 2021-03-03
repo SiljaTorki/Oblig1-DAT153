@@ -4,7 +4,6 @@ package com.example.oblig1;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import com.google.common.collect.Iterables;
 
 import org.junit.After;
 import org.junit.Before;
@@ -55,7 +54,7 @@ public class buttonTest {
                 .perform(click());
 
         intended(
-                hasComponent(Quiz.class.getName())
+                hasComponent(QuizActivity.class.getName())
         );
 
     }

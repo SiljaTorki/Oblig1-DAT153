@@ -11,7 +11,7 @@ import com.example.oblig1.repository.Repository;
 import java.util.List;
 
 public class ViewModelDatabase extends AndroidViewModel {
-    private Repository mRepository;
+    public Repository mRepository;
 
     private LiveData<List<Cat>> mAllCats;
 

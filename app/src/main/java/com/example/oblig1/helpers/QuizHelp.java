@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* This class is helping Quiz.java
+* This class is helping QuizActivity.java
 *  - checking that the user´s guess
 *  - creates a random list of cats
 *  - return the amount of correct answers
@@ -23,7 +23,7 @@ public class QuizHelp {
 
     /*
     * Returns a response/answer to user´s guess, used in a toast
-    * Method is called in btnCheckAnswer in Quiz.java
+    * Method is called in btnCheckAnswer in QuizActivity.java
     */
     public CharSequence checkAnswer(String answer, String name){
         CharSequence response;
@@ -50,7 +50,7 @@ public class QuizHelp {
         for(int j = 0; j < original.size(); j++) {
             tall = (int) (Math.random()*original.size());
             if(!cats.contains(original.get(tall)))           //Check if it already exist
-                cats.add(j, original.get(tall));             //Add to the list
+                cats.add(j, original.get(tall));             //AddActivity to the list
             else
                 j--;      //To secure that all cats are transferred to the new list
         }

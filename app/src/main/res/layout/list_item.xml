@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:stretchColumns="*"
         android:gravity="center_vertical"
-        tools:context=".Database">
+        tools:context=".DatabaseActivity">
 
         <TableRow>
             <ImageView

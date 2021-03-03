@@ -29,7 +29,7 @@ import java.util.List;
 * We have now progressed from using multiple new Threads, to use LivData
  */
 
-public class Quiz extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity {
 
     TextView score;
     TextView count;
@@ -84,13 +84,6 @@ public class Quiz extends AppCompatActivity {
             btnNext.setEnabled(true);
         });
 
-        /*
-        * Checking the answer of the user´s input, by using a lambda expression
-        * using the method answerAndResponse()
-         */
-        btnCheckAnswer.setOnClickListener((View v) -> {
-            answerAndResponse();
-        });
 
         /*
         * Getting the next image in the list
@@ -170,7 +163,7 @@ public class Quiz extends AppCompatActivity {
     * Updates the score if correct guess
     * Also provides a response in form of a Toast
     */
-    private void answerAndResponse(){
+    public void answerAndResponse(View v){
         CharSequence response = null;
         /*
          * if not empty, gets the text from editText field
@@ -186,9 +179,9 @@ public class Quiz extends AppCompatActivity {
         score.setText(quizScore1);
 
         //Showing the toast
-        Context context = getApplicationContext();
+      //  Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
-        Toast toast = Toast.makeText(context, response, duration);
+        Toast toast = Toast.makeText(this, response, duration);
         toast.show();
     }
 

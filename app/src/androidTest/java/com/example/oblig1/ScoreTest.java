@@ -22,22 +22,22 @@ public class ScoreTest {
     * @Rule is used to determine which class is tested
      */
     @Rule
-    public ActivityScenarioRule<Quiz> activityRule =
-            new ActivityScenarioRule<>(Quiz.class);
+    public ActivityScenarioRule<QuizActivity> activityRule =
+            new ActivityScenarioRule<>(QuizActivity.class);
 
 
     /*
-    * A test to check that the score in Quiz.java is updated
+    * A test to check that the score in QuizActivity.java is updated
     * when guessing the correct cat-name of the cat-image in the quiz
     *
-    * First getCatName() from Quiz.java file is called
+    * First getCatName() from QuizActivity.java file is called
     * Then checking the score is 0 before guessing
     * After clicking "check answer" button, the score should be updated to 1
      */
     @Test
     public void scoreIsCorrect() {
 
-        String rightName = Quiz.getCatName();
+        String rightName = com.example.oblig1.QuizActivity.getCatName();
         onView(withId(R.id.quizScore)).check(matches(withText("Your score: " + 0 )));
         onView(withId(R.id.editTextGuess)).perform(typeText(rightName), closeSoftKeyboard());
         onView(withId(R.id.buttonCheckAnswer)).perform(click());
@@ -46,10 +46,10 @@ public class ScoreTest {
     }
 
     /*
-     * A test to check that the score in Quiz.java is NOT updated
+     * A test to check that the score in QuizActivity.java is NOT updated
      * when providing a wrong guess for the cat-name of the cat-image in the quiz
      *
-     * First getCatName() from Quiz.java file is called
+     * First getCatName() from QuizActivity.java file is called
      * Then checking the score is 0 before guessing
      * After clicking "check answer" button, the score should stay at 0
      */

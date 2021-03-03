@@ -20,6 +20,9 @@ public interface CatDao {
     @Query("SELECT * FROM cat")
     LiveData<List<Cat>> getAllLive();
 
+    @Query("SELECT COUNT(*) FROM cat")
+    ListenableFuture<Integer> getSize();
+
     @Insert
     void insert(Cat cat);
 

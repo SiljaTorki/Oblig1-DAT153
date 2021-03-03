@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,12 +20,13 @@ import com.example.oblig1.helpers.AddHelp;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
 *   This class is allowing a user to add their own chosen image to the database
  */
 
-public class Add extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 100; // the request code defined as an instance variable
     private ImageView iv;
     private String name;
@@ -32,8 +34,6 @@ public class Add extends AppCompatActivity {
     private Uri selectedImage;
     private EditText editText;
     private ViewModelDatabase vmd;
-
-    private static int size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,6 @@ public class Add extends AppCompatActivity {
         Button btnAdd = (Button)findViewById(R.id.buttonAdd);
 
         vmd = new ViewModelDatabase(getApplication());
-
-        listSize();//TESTING ONLY
 
         /*
         * The choose-action is created, by using lambda expression
@@ -83,8 +81,10 @@ public class Add extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     selectedImage = data.getData();
 
+                    //Dette gir en strict-mode varsel, men vi har bestemt oss for å ignorere det
                     iv.setImageURI(selectedImage);
                     getContentResolver().takePersistableUriPermission(selectedImage, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    Log.d("vs",selectedImage.toString());
                 }
                 break;
         }
@@ -103,13 +103,10 @@ public class Add extends AppCompatActivity {
         if(ah.readyForAdding()) {
             Cat cat = new Cat(name, selectedImage.toString());
             vmd.insert(cat);
-
-            //TESTING ONLY
-            listSize();
         }
-        Context context = getApplicationContext();
+        //Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;               //Says how long the Toast should last
-        Toast toast = Toast.makeText(context, response, duration);  //creating the Toast
+        Toast toast = Toast.makeText(this, response, duration);  //creating the Toast
         //provides a response for the user
         toast.show();
 
@@ -131,16 +128,10 @@ public class Add extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-    // TESTING ONLY
-    public void listSize(){
-        vmd.getAllLive().observe(this,(List<Cat> obs)-> {
-            size = obs.size();
-        });
-    }
 
     //TESTING ONLY
-    public static int getListSize(){
-        return size;
+    public Integer getListSize() throws ExecutionException, InterruptedException {
+       return vmd.mRepository.getCount();
     }
 
 

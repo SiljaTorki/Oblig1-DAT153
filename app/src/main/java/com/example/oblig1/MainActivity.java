@@ -1,7 +1,6 @@
 package com.example.oblig1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
+
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll() // <=====
                 .penaltyLog()
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 .penaltyLog()
                 .penaltyDeath()
                 .build());
-*/
+
         //Sets up the database if its empty
         setup();
 
@@ -49,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
         Button btnDatabase = (Button) findViewById(R.id.buttonDatabase);
 
 
-       //Redirects the user to the Quiz-page
+       //Redirects the user to the QuizActivity-page
         btnQuiz.setOnClickListener((View v)->{
                 //this should send the user to the quiz-activity
-                Intent intent = new Intent(MainActivity.this, Quiz.class);
+                Intent intent = new Intent(MainActivity.this, QuizActivity.class);
                 startActivity(intent);
         });
 
 
-        //Redirects the user to the Add-page
+        //Redirects the user to the AddActivity-page
         btnAddImage.setOnClickListener((View v) ->{
                 // this should make it possible for user to add images from the phone´s library
-                Intent intent = new Intent(MainActivity.this, Add.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 startActivity(intent);
 
         });
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
        //Redirects the user to the database-page
         btnDatabase.setOnClickListener((View v) -> {
                 // this should make it possible for user to look at all the images added to the quiz
-                Intent intent = new Intent(MainActivity.this, Database.class);
+                Intent intent = new Intent(MainActivity.this, DatabaseActivity.class);
                 startActivity(intent);
         });
 
