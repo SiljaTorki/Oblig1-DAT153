@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.oblig1.domain.Cat;
 import com.example.oblig1.helpers.AddHelp;
-import com.example.oblig1.helpers.DatabaseHelper;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
 import java.util.List;

@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.helpers.DatabaseHelper;
 import com.example.oblig1.repository.Repository;
 import com.example.oblig1.sqlLite.AppDatabase;
 import com.example.oblig1.sqlLite.DatabaseClient;
@@ -35,7 +34,7 @@ public class Database extends AppCompatActivity {
     ListView listView;
     private List<Cat> cats;  // A list to store the cat-photos in
     private int deleted = 0;
-    private DatabaseHelper dbHelper;
+   // private DatabaseHelper dbHelper;
     private CustomAdapter adapter;
     private ViewModelDatabase vmd;
 
@@ -63,8 +62,8 @@ public class Database extends AppCompatActivity {
         });
 
         //Creates access to the database
-        dbHelper = new DatabaseHelper (getApplicationContext());
-        cats = dbHelper.getAllCats();
+     //   dbHelper = new DatabaseHelper (getApplicationContext());
+      //  cats = dbHelper.getAllCats();
 
         theToolbar();
 
