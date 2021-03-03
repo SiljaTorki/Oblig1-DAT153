@@ -90,6 +90,19 @@ public class QuizActivity extends AppCompatActivity {
             findCat();
             updateQuiz();
         });
+
+        btnCheckAnswer.setOnClickListener((View v)->{
+            CharSequence response = null;
+            /*
+             * if not empty, gets the text from editText field
+             * Checking the users answer, with help from QuizHelp.java
+             */
+            if(editText != null) {
+                String answer = editText.getText().toString();
+                response = quizh.checkAnswer(answer, cat.getName());
+            }
+            updateScore(response);
+        });
     }
     /*
     Finding the new cat to be shown in the quiz
@@ -156,21 +169,9 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     /*
-    * Checking the users answer, with help from QuizHelp.java
-    * Updates the score if correct guess
-    * Also provides a response in form of a Toast
+    * provides a response in form of a Toast
     */
-    public void answerAndResponse(View v){
-        CharSequence response = null;
-        /*
-         * if not empty, gets the text from editText field
-         * and checking the user´s answer
-         */
-        if(editText != null) {
-            String answer = editText.getText().toString();
-            response = quizh.checkAnswer(answer, cat.getName());
-        }
-
+    public void updateScore(CharSequence response){
         //Updating the score by calling getCorrect() from QuizHelper
         String quizScore1 = "Your score: " + quizh.getCorrect();
         score.setText(quizScore1);
