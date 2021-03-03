@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.oblig1.domain.Cat;
-import com.example.oblig1.helpers.DatabaseHelper;
 import com.example.oblig1.viewModels.ViewModelDatabase;
 
 import java.util.List;
@@ -28,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll() // <=====
+                .penaltyLog()
+                .build());
+
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
 
         //Sets up the database if its empty
         setup();
