@@ -60,7 +60,6 @@ public class AddActivity extends AppCompatActivity {
         //The add-action is created
         btnAdd.setOnClickListener((View v) -> {
             addAndResponse();
-
         });
     }
 
@@ -76,10 +75,9 @@ public class AddActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     selectedImage = data.getData();
 
-                    //Dette gir en strict-mode varsel, men vi har bestemt oss for å ignorere det
+                    //This gives us a strictMode alert, but we ignore it
                     iv.setImageURI(selectedImage);
                     getContentResolver().takePersistableUriPermission(selectedImage, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    Log.d("vs",selectedImage.toString());
                 }
                 break;
         }
@@ -123,10 +121,8 @@ public class AddActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-    //TESTING ONLY
+    //Only use during testing
     public Integer getListSize() throws ExecutionException, InterruptedException {
        return vmd.mRepository.getCount();
     }
-
-
 }
