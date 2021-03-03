@@ -25,7 +25,7 @@ import java.util.List;
 /**
 * This class is responsible for providing a visual of all elements in the database.
 * It also makes it possible for the users to delete selected images
-* and also to add new images, by redirecting them to the Add.class.
+* and also to add new images, by redirecting the user to the Add.class.
 *
 * The view is updated, when a image is deleted og added.
  */
@@ -38,7 +38,6 @@ public class Database extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private CustomAdapter adapter;
     private ViewModelDatabase vmd;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,6 @@ public class Database extends AppCompatActivity {
             btnRemove.setEnabled(true);
 
         });
-
 
         //Creates access to the database
         dbHelper = new DatabaseHelper (getApplicationContext());
@@ -104,7 +102,6 @@ public class Database extends AppCompatActivity {
     /*
     * Deletes the selected cats and updates the ListView
      */
-
     public void deleteCat(){
         // Remove the Cat from the database list
         int count = listView.getCount();  //number of ListView items
@@ -120,14 +117,10 @@ public class Database extends AppCompatActivity {
                 vmd.delete(cat);;
                 cats.remove(cats.get(i - deleted));
                 deleted++;
-
             }
         }
-
 
         //Update the view
         listView.setAdapter(adapter);
     }
-
-
 }
