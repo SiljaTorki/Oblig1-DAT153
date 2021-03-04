@@ -1,6 +1,7 @@
 package com.example.oblig1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
     // Checks if the database is empty, and adding the three main cats
     public void setup(){
-    vmd = new ViewModelDatabase(getApplication());
+    vmd = new ViewModelProvider(this).get(ViewModelDatabase.class);
         vmd.getAllLive().observe(this,(List<Cat> obs) -> {
         if(obs.size()==0){
             vmd.insert(new Cat("Cat one", DRAWABLE + "cat_one"));
