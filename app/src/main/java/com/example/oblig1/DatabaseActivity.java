@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +42,7 @@ public class DatabaseActivity extends AppCompatActivity {
         btnAdd.setEnabled(false);
         btnRemove.setEnabled(false);
 
-        vmd = new ViewModelDatabase(getApplication());
+        vmd = new ViewModelProvider(this).get(ViewModelDatabase.class);
         vmd.getAllLive().observe(this, (List<Cat> obs) ->{
             adapter = new CustomAdapter(obs, DatabaseActivity.this);
             //Lists all the cats

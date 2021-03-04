@@ -3,6 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,7 +69,7 @@ public class QuizActivity extends AppCompatActivity {
         btnCheckAnswer.setEnabled(false);
         btnNext.setEnabled(false);
 
-        vmd = new ViewModelDatabase(getApplication());
+        vmd = new ViewModelProvider(this).get(ViewModelDatabase.class);;
         vmd.getAllLive().observe(this, (List<Cat> obs) -> {
             Collections.shuffle(obs);
             catIterator = obs.iterator();

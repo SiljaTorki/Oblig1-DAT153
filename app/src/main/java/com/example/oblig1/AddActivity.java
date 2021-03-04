@@ -3,6 +3,7 @@ package com.example.oblig1;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -48,7 +49,7 @@ public class AddActivity extends AppCompatActivity {
         Button btnChoose = (Button)findViewById(R.id.addButtonChoose);
         Button btnAdd = (Button)findViewById(R.id.addButtonImage);
 
-        vmd = new ViewModelDatabase(getApplication());
+        vmd = new ViewModelProvider(this).get(ViewModelDatabase.class);
 
         //This method makes it possible for the user to find and add an image
         btnChoose.setOnClickListener((View v) -> {
